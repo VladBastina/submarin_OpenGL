@@ -19,9 +19,17 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GerstnerWave.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ocean.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ocean.vs" />
-    <None Include="Ocean.fs" />
+    <None Include="Water.fs" />
+    <None Include="Water2.vs">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

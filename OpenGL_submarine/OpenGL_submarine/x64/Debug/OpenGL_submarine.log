@@ -1,2 +1,8 @@
-﻿  Shader.cpp
-  OpenGL_submarine.vcxproj -> C:\Users\vladb\Documents\S3DProject\OpenGL_submarine\x64\Debug\OpenGL_submarine.exe
+﻿  OpenGL_submarine.cpp
+C:\Users\vladb\Documents\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Shader.cpp(119,34): warning C4101: 'e': unreferenced local variable
+  (compiling source file 'OpenGL_submarine.cpp')
+  
+C:\Users\vladb\Documents\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Ocean.cpp(101,44): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'OpenGL_submarine.cpp')
+  
+  OpenGL_submarine.vcxproj -> C:\Users\vladb\Documents\submarin_OpenGL\OpenGL_submarine\x64\Debug\OpenGL_submarine.exe

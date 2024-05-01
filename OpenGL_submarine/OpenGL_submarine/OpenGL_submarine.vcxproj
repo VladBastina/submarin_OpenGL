@@ -132,14 +132,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="GerstnerWave.cpp" />
+    <ClCompile Include="Ocean.cpp" />
     <ClCompile Include="OpenGL_submarine.cpp" />
     <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ocean.fs">
+    <None Include="Water.fs">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </None>
-    <None Include="Ocean.vs">
+    <None Include="Water2.vs">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </None>
   </ItemGroup>
