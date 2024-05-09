@@ -25,10 +25,19 @@
     <ClCompile Include="Ocean.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Water.fs" />
     <None Include="Water2.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="SkyBox.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="SkyBox.fs">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>

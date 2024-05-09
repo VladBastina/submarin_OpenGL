@@ -1,8 +1,8 @@
-﻿#include "Ocean.cpp"
-
-#define STB_IMAGE_IMPLEMENTATION
+﻿#define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 #include <map>
+
+#include "Skybox.cpp"
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -15,6 +15,48 @@ void Cleanup()
 	delete pCamera;
 }
 
+unsigned int loadSkyboxTexture(const std::vector<std::string>& faces)
+{
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+
+	int width, height, nrChannels;
+	for (unsigned int i = 0; i < faces.size(); i++)
+	{
+		unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+		if (data != nullptr)
+		{
+			if(i==0)
+				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			else if (i==1)
+				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			else if (i == 2)
+				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			else if (i == 3)
+				glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			else if (i == 4)
+				glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y+ i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			else if (i == 5)
+				glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		}
+		else
+		{
+			std::cout << "Failed to load texture: " << faces[i] << std::endl;
+			return 0;
+		}
+		stbi_image_free(data);
+	}
+
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+	return textureID;
+}
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -24,8 +66,6 @@ void processInput(GLFWwindow* window);
 // timing
 double deltaTime = 0.0f;	// time between current frame and last frame
 double lastFrame = 0.0f;
-
-unsigned int CreateTexture(const std::string& strTexturePath);
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -61,6 +101,16 @@ int main(int argc, char** argv)
 	if (std::string::npos != last_slash_idx) {
 		strExePath = strFullExeFileName.substr(0, last_slash_idx);
 	}
+
+	std::vector<std::string> faces
+	{
+		"right.jpg",
+		"left.jpg",
+		"top.jpg",
+		"down.jpg",
+		"front.jpg",
+		"back.jpg"
+	};
 
 	std::vector<GerstnerWave> waves = {
 	{0.2f, 1.0f, 1.0f, 0.0f, 0.0f},
@@ -104,7 +154,10 @@ int main(int argc, char** argv)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	unsigned int skyboxtextureID = loadSkyboxTexture(faces);
+
 	Ocean* ocean = new Ocean();
+	SkyBox* skybox = new SkyBox(skyboxtextureID);
 	
 	// Create camera
 	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 3.0));
@@ -123,6 +176,7 @@ int main(int argc, char** argv)
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		skybox->RenderSkybox(pCamera);
 		ocean->RenderOcean(pCamera, lightPos, glm::vec3(1.0f, 0.8f, 0.4f), currentFrame, waves);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -133,6 +187,7 @@ int main(int argc, char** argv)
 
 	Cleanup();
 	delete ocean;
+	delete skybox;
 
 	// glfw: terminate, clearing all previously allocated GLFW resources
 	glfwTerminate();
@@ -163,41 +218,4 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 void scroll_callback(GLFWwindow* window, double xoffset, double yOffset)
 {
 	pCamera->ProcessMouseScroll((float)yOffset);
-}
-
-unsigned int CreateTexture(const std::string& strTexturePath)
-{
-	unsigned int textureId = -1;
-
-	// load image, create texture and generate mipmaps
-	int width, height, nrChannels;
-	//stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
-	unsigned char* data = stbi_load(strTexturePath.c_str(), &width, &height, &nrChannels, 0);
-	if (data) {
-		GLenum format;
-		if (nrChannels == 1)
-			format = GL_RED;
-		else if (nrChannels == 3)
-			format = GL_RGB;
-		else if (nrChannels == 4)
-			format = GL_RGBA;
-
-		glGenTextures(1, &textureId);
-		glBindTexture(GL_TEXTURE_2D, textureId);
-		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-
-		// set the texture wrapping parameters
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
-		// set texture filtering parameters
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	}
-	else {
-		std::cout << "Failed to load texture: " << strTexturePath << std::endl;
-	}
-	stbi_image_free(data);
-
-	return textureId;
 }
