@@ -21,24 +21,13 @@ unsigned int loadSkyboxTexture(const std::vector<std::string>& faces)
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
-	int width, height, nrChannels;
 	for (unsigned int i = 0; i < faces.size(); i++)
 	{
+		int width, height, nrChannels;
 		unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
-		if (data != nullptr)
+		if (data)
 		{
-			if(i==0)
 				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			else if (i==1)
-				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			else if (i == 2)
-				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			else if (i == 3)
-				glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			else if (i == 4)
-				glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y+ i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-			else if (i == 5)
-				glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		}
 		else
 		{
@@ -177,6 +166,7 @@ int main(int argc, char** argv)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		skybox->RenderSkybox(pCamera);
+
 		ocean->RenderOcean(pCamera, lightPos, glm::vec3(1.0f, 0.8f, 0.4f), currentFrame, waves);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
