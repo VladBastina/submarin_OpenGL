@@ -15,28 +15,28 @@ void Cleanup()
 	delete pCamera;
 }
 
-unsigned int loadSkyboxTexture(const std::vector<std::string>& faces)
+unsigned int loadSkyboxTexture(const std::vector<std::string>& faces, std::string strExePath)
 {
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 
+	int width, height, nrChannels;
 	for (unsigned int i = 0; i < faces.size(); i++)
 	{
-		int width, height, nrChannels;
-		unsigned char* data = stbi_load(faces[i].c_str(), &width, &height, &nrChannels, 0);
+		std::string path = strExePath + "\\" + faces[i];
+		unsigned char* data = stbi_load(path.c_str(), &width, &height, &nrChannels, 0);
 		if (data)
 		{
-				glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
 		}
 		else
 		{
-			std::cout << "Failed to load texture: " << faces[i] << std::endl;
-			return 0;
+			std::cout << "Cubemap tex failed to load at path: " << path << std::endl;
+			stbi_image_free(data);
 		}
-		stbi_image_free(data);
 	}
-
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -140,10 +140,10 @@ int main(int argc, char** argv)
 	glewInit();
 
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	unsigned int skyboxtextureID = loadSkyboxTexture(faces);
+	unsigned int skyboxtextureID = loadSkyboxTexture(faces,strExePath);
 
 	Ocean* ocean = new Ocean();
 	SkyBox* skybox = new SkyBox(skyboxtextureID);
@@ -151,7 +151,8 @@ int main(int argc, char** argv)
 	// Create camera
 	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 3.0));
 
-	glm::vec3 lightPos(0.0f, 5.0f, 0.0f);
+	glm::vec3 lightPos(0.0f, 20.0f, 0.0f);
+	glm::vec3 lightColor(1.0f, 0.8f, 0.4f);
 
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
@@ -165,9 +166,9 @@ int main(int argc, char** argv)
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		skybox->RenderSkybox(pCamera);
+		//skybox->RenderSkybox(pCamera);
 
-		ocean->RenderOcean(pCamera, lightPos, glm::vec3(1.0f, 0.8f, 0.4f), currentFrame, waves);
+		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		glfwSwapBuffers(window);

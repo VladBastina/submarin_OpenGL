@@ -13,16 +13,20 @@ private:
 public:
 	Ocean()
 	{
-		for (float k = -10.0f; k < 10.0f; k += 0.1f)
-			for (float i = -10.0f; i < 10.0f; i += 0.1f)
+		int numPointsPerSide = 0;
+
+		for (float k = -100.0f; k < 100.0f; k += 0.1f)
+		{
+			numPointsPerSide++;
+			for (float i = -100.0f; i < 100.0f; i += 0.1f)
 			{
 				oceanPoints.push_back(k);
 				oceanPoints.push_back(0.0f);
 				oceanPoints.push_back(i);
 
 			}
+		}
 
-		int numPointsPerSide = 200;
 		int gridSize = numPointsPerSide - 1;
 
 		for (int z = 0; z < gridSize; ++z) {
@@ -92,7 +96,7 @@ public:
 		oceanShader->SetFloat("ambientReflection", 0.3f);
 		oceanShader->SetFloat("diffuseConstant", 1.0f);
 		oceanShader->SetFloat("specularConstant", 1.0f);
-		oceanShader->SetFloat("shininess", 100.0f);
+		oceanShader->SetFloat("shininess", 1000.0f);
 
 		oceanShader->SetMat4("model", model);
 		glBindVertexArray(oceanVAO);

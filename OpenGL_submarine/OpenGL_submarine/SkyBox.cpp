@@ -8,36 +8,48 @@ public:
         textureID = texture;
 
         float vertices[] = {
-        -0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
+	    -1.0f, 1.0f, -1.0f,
+	    -1.0f, -1.0f, -1.0f,
+	     1.0f, -1.0f, -1.0f,
+	     1.0f, -1.0f, -1.0f,
+	     1.0f, 1.0f, -1.0f,
+	     -1.0f, 1.0f, -1.0f,
 
-        -0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f, -0.5f,
-        0.5f,  0.5f, -0.5f,
-        -0.5f,  0.5f, -0.5f,
+	    -1.0f, -1.0f, 1.0f,
+	    -1.0f, -1.0f, -1.0f,
+	    -1.0f, 1.0f, -1.0f,
+	    -1.0f, 1.0f, -1.0f,
+	    -1.0f, 1.0f, 1.0f,
+	    -1.0f, -1.0f, 1.0f,
 
-        -0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f, -0.5f,
+	    1.0f, -1.0f, 1.0f,
+	    1.0f, -1.0f, -1.0f,
+	    1.0f, 1.0f, -1.0f,
+	    1.0f, 1.0f, -1.0f,
+	    1.0f, 1.0f, 1.0f,
+	    1.0f, -1.0f, 1.0f,
 
-        0.5f, -0.5f, -0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f, -0.5f,
+	    -1.0f, -1.0f, 1.0f,
+	    -1.0f, 1.0f, 1.0f,
+	    1.0f, 1.0f, 1.0f,
+	    1.0f, 1.0f, 1.0f,
+	    1.0f, -1.0f, 1.0f,
+	    -1.0f, -1.0f, 1.0f,
 
-        -0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f,  0.5f,
-        0.5f,  0.5f, -0.5f,
-        -0.5f,  0.5f, -0.5f,
+	    -1.0f, 1.0f, -1.0f,
+	    -1.0f, 1.0f, 1.0f,
+	    1.0f, 1.0f, 1.0f,
+	    1.0f, 1.0f, 1.0f,
+	    1.0f, 1.0f, -1.0f,
+	    -1.0f, 1.0f, -1.0f,
 
-        -0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f,  0.5f,
-        0.5f, -0.5f, -0.5f,
-        -0.5f, -0.5f, -0.5f
-        };
+	    -1.0f, -1.0f, -1.0f,
+	    -1.0f, -1.0f, 1.0f,
+	    1.0f, -1.0f, 1.0f,
+	    1.0f, -1.0f, 1.0f,
+	    1.0f, -1.0f, -1.0f,
+	    -1.0f, -1.0f, -1.0f,
+		};
 
 
         glGenVertexArrays(1, &skyboxVAO);
@@ -56,22 +68,19 @@ public:
 
     void RenderSkybox(Camera* pcamera)
     {
-        //glDepthMask(GL_FALSE);
+        glDepthFunc(GL_LEQUAL);
         skyboxShader->Use();
-        //glm::mat4 view = glm::mat4(glm::mat3(pcamera->GetViewMatrix()));
-        skyboxShader->SetMat4("view", pcamera->GetViewMatrix());
+        glm::mat4 view = glm::mat4(glm::mat3(pcamera->GetViewMatrix()));
+        skyboxShader->SetMat4("view", view);
         skyboxShader->SetMat4("projection", pcamera->GetProjectionMatrix());
 
-        glm::mat4 model = glm::mat4(1.0f);
-        skyboxShader->SetMat4("model", model);
-        skyboxShader->SetVec3("color", glm::vec3(1.0f,1.0f,1.0f));
-
         glBindVertexArray(skyboxVAO);
+		glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-        glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         glBindVertexArray(0);
-        //glDepthMask(GL_TRUE);
+        glDepthFunc(GL_LESS);
     }
 
     ~SkyBox()
