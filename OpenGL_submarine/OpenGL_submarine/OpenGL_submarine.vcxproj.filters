@@ -28,6 +28,9 @@
     <ClCompile Include="SkyBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Water.fs" />
@@ -40,5 +43,9 @@
     <None Include="SkyBox.fs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Terrain.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Terrain.fs" />
   </ItemGroup>
 </Project>

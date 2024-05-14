@@ -46,6 +46,43 @@ unsigned int loadSkyboxTexture(const std::vector<std::string>& faces, std::strin
 	return textureID;
 }
 
+unsigned int CreateTexture(const std::string& strTexturePath)
+{
+	unsigned int textureId = -1;
+
+	// load image, create texture and generate mipmaps
+	int width, height, nrChannels;
+	//stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
+	unsigned char* data = stbi_load(strTexturePath.c_str(), &width, &height, &nrChannels, 0);
+	if (data) {
+		GLenum format;
+		if (nrChannels == 1)
+			format = GL_RED;
+		else if (nrChannels == 3)
+			format = GL_RGB;
+		else if (nrChannels == 4)
+			format = GL_RGBA;
+
+		glGenTextures(1, &textureId);
+		glBindTexture(GL_TEXTURE_2D, textureId);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		// set the texture wrapping parameters
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
+		// set texture filtering parameters
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	}
+	else {
+		std::cout << "Failed to load texture: " << strTexturePath << std::endl;
+	}
+	stbi_image_free(data);
+
+	return textureId;
+}
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -144,6 +181,8 @@ int main(int argc, char** argv)
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	unsigned int skyboxtextureID = loadSkyboxTexture(faces,strExePath);
+	unsigned int stonestextureID = CreateTexture(strExePath + "\\pietris.png");
+	unsigned int causticstextureID = CreateTexture(strExePath + "\\caustic.png");
 
 	Ocean* ocean = new Ocean();
 	SkyBox* skybox = new SkyBox(skyboxtextureID);
@@ -168,7 +207,7 @@ int main(int argc, char** argv)
 
 		skybox->RenderSkybox(pCamera);
 
-		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves);
+		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		glfwSwapBuffers(window);

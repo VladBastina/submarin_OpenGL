@@ -1,6 +1,7 @@
 #include "Shader.cpp"
 #include "Camera.cpp"
 #include "GerstnerWave.cpp"
+#include "PerlinNoise.cpp"
 
 class Ocean 
 {
@@ -9,10 +10,17 @@ private:
 	std::vector<unsigned int> indices;
 	unsigned int oceanVAO, oceanVBO, oceanEBO;
 	Shader* oceanShader;
+	PerlinNoise* perlinNoise;
+	std::vector<float>terrainPoints;
+	std::vector<unsigned int>terrainIndices;
+	unsigned int terrainVAO, terrainVBO, terrainEBO;
+	Shader* terrainShader;
 
 public:
 	Ocean()
 	{
+		perlinNoise = new PerlinNoise();
+
 		int numPointsPerSide = 0;
 
 		for (float k = -100.0f; k < 100.0f; k += 0.1f)
@@ -63,9 +71,61 @@ public:
 		glBindVertexArray(0);
 
 		oceanShader = new Shader("Water2.vs", "Water.fs");
+
+		int numpoints = 0;
+
+		for (float k = -100.0f; k < 100.0f; k += 0.5f)
+		{
+			numpoints++;
+			for (float i = -100.0f; i < 100.0f; i +=0.5f)
+			{
+				double height = (perlinNoise->noise(k/10, 0.0, i/10))*10.0;
+				terrainPoints.push_back(k);
+				terrainPoints.push_back(height);
+				terrainPoints.push_back(i);
+
+			}
+		}
+
+		gridSize = numpoints - 1;
+
+		for (int z = 0; z < gridSize; ++z) {
+			for (int x = 0; x < gridSize; ++x) {
+				int topLeft = z * numpoints+ x;
+				int topRight = topLeft + 1;
+				int bottomLeft = (z + 1) * numpoints + x;
+				int bottomRight = bottomLeft + 1;
+
+				terrainIndices.push_back(topLeft);
+				terrainIndices.push_back(bottomRight);
+				terrainIndices.push_back(bottomLeft);
+
+				terrainIndices.push_back(topLeft);
+				terrainIndices.push_back(topRight);
+				terrainIndices.push_back(bottomRight);
+			}
+		}
+
+		glGenVertexArrays(1, &terrainVAO);
+		glBindVertexArray(terrainVAO);
+
+		glGenBuffers(1, &terrainVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, terrainVBO);
+		glBufferData(GL_ARRAY_BUFFER, terrainPoints.size() * sizeof(float), terrainPoints.data(), GL_STATIC_DRAW);
+
+		glGenBuffers(1, &terrainEBO);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, terrainEBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, terrainIndices.size() * sizeof(unsigned int), terrainIndices.data(), GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(0);
+
+		glBindVertexArray(0);
+
+		terrainShader = new Shader("Terrain.vs", "Terrain.fs");
 	}
 
-	void RenderOcean(Camera* pCamera, glm::vec3 lightPos, glm::vec3 lightColor,double currentFrame,std::vector<GerstnerWave>waves)
+	void RenderOcean(Camera* pCamera, glm::vec3 lightPos, glm::vec3 lightColor,double currentFrame,std::vector<GerstnerWave>waves,unsigned int skyboxTextureID,unsigned int stonesTextureID ,unsigned int causticstextureID)
 	{
 		glm::mat4 model = glm::mat4(1.0);
 
@@ -102,7 +162,32 @@ public:
 		glBindVertexArray(oceanVAO);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTextureID);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+		glBindVertexArray(0);
+
+		glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0), glm::vec3(0.0, -20.0, 0.0));
+
+		model = translationMatrix * model;
+
+		terrainShader->Use();
+		terrainShader->SetMat4("projection", projection);
+		terrainShader->SetMat4("view", view);
+
+		terrainShader->SetMat4("model", model);
+		glBindVertexArray(terrainVAO);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, stonesTextureID);
+
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, causticstextureID);
+
+		glDrawElements(GL_TRIANGLES, terrainIndices.size(), GL_UNSIGNED_INT, 0);
 
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
@@ -116,5 +201,9 @@ public:
 		glDeleteVertexArrays(1, &oceanVAO);
 		glDeleteBuffers(1, &oceanVBO);
 		std::cout << "Ocean deleted"<<std::endl;
+		terrainPoints.clear();
+		terrainIndices.clear();
+		glDeleteVertexArrays(1, &terrainVAO);
+		glDeleteBuffers(1, &terrainVBO);
 	}
 };

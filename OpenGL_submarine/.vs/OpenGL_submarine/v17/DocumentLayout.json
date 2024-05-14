@@ -1,41 +1,53 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\",
+  "WorkspaceRootPath": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\OpenGL_submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\SkyBox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Terrain.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Terrain.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
-      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\SkyBox.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.vs||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\SkyBox.vs||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
-      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Water.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water2.vs||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Water2.vs||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Ocean.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Ocean.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Ocean.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\SkyBox.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Water.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water2.vs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Water2.vs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Terrain.vs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Terrain.vs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\PerlinNoise.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\PerlinNoise.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.vs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\SkyBox.vs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\SkyBox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Shader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -46,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,89 +66,120 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SkyBox.fs",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.fs",
-              "RelativeDocumentMoniker": "OpenGL_submarine\\SkyBox.fs",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.fs",
-              "RelativeToolTip": "OpenGL_submarine\\SkyBox.fs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-07T08:57:47.134Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SkyBox.vs",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.vs",
-              "RelativeDocumentMoniker": "OpenGL_submarine\\SkyBox.vs",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.vs",
-              "RelativeToolTip": "OpenGL_submarine\\SkyBox.vs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-07T08:57:29.775Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SkyBox.cpp",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.cpp",
-              "RelativeDocumentMoniker": "OpenGL_submarine\\SkyBox.cpp",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.cpp",
-              "RelativeToolTip": "OpenGL_submarine\\SkyBox.cpp",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAAAEYAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-07T08:19:23.667Z",
+              "Title": "Terrain.fs",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Terrain.fs",
+              "RelativeDocumentMoniker": "OpenGL_submarine\\Terrain.fs",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Terrain.fs",
+              "RelativeToolTip": "OpenGL_submarine\\Terrain.fs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB8AAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-14T14:45:36.391Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Ocean.cpp",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Ocean.cpp",
-              "RelativeDocumentMoniker": "OpenGL_submarine\\Ocean.cpp",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Ocean.cpp",
-              "RelativeToolTip": "OpenGL_submarine\\Ocean.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGYAAAAEAAAA",
+              "Title": "Terrain.vs",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Terrain.vs",
+              "RelativeDocumentMoniker": "OpenGL_submarine\\Terrain.vs",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Terrain.vs",
+              "RelativeToolTip": "OpenGL_submarine\\Terrain.vs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-14T14:44:42.482Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PerlinNoise.cpp",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\PerlinNoise.cpp",
+              "RelativeDocumentMoniker": "OpenGL_submarine\\PerlinNoise.cpp",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\PerlinNoise.cpp",
+              "RelativeToolTip": "OpenGL_submarine\\PerlinNoise.cpp",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAYwHAAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-01T14:49:53.979Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T14:19:49.464Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SkyBox.fs",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.fs",
+              "RelativeDocumentMoniker": "OpenGL_submarine\\SkyBox.fs",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.fs",
+              "RelativeToolTip": "OpenGL_submarine\\SkyBox.fs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-07T08:57:47.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SkyBox.vs",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.vs",
+              "RelativeDocumentMoniker": "OpenGL_submarine\\SkyBox.vs",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.vs",
+              "RelativeToolTip": "OpenGL_submarine\\SkyBox.vs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-05-07T08:57:29.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SkyBox.cpp",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.cpp",
+              "RelativeDocumentMoniker": "OpenGL_submarine\\SkyBox.cpp",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SkyBox.cpp",
+              "RelativeToolTip": "OpenGL_submarine\\SkyBox.cpp",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAE8AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-07T08:19:23.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Ocean.cpp",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Ocean.cpp",
+              "RelativeDocumentMoniker": "OpenGL_submarine\\Ocean.cpp",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Ocean.cpp",
+              "RelativeToolTip": "OpenGL_submarine\\Ocean.cpp",
+              "ViewState": "AQIAAK8AAAAAAAAAAAAAALcAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-01T14:49:53.979Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Water2.vs",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water2.vs",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water2.vs",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Water2.vs",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water2.vs",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water2.vs",
               "RelativeToolTip": "OpenGL_submarine\\Water2.vs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAQAAAAAAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACYAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-01T14:43:06.718Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T14:43:06.718Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Water.fs",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water.fs",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water.fs",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Water.fs",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water.fs",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Water.fs",
               "RelativeToolTip": "OpenGL_submarine\\Water.fs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAaAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACwAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-04-23T15:52:10.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-23T15:52:10.152Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Shader.cpp",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Shader.cpp",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Shader.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Shader.cpp",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Shader.cpp",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Shader.cpp",
               "RelativeToolTip": "OpenGL_submarine\\Shader.cpp",
               "ViewState": "AQIAAE4AAAAAAAAAAAAAABwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -144,11 +187,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Camera.cpp",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Camera.cpp",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Camera.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Camera.cpp",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Camera.cpp",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Camera.cpp",
               "RelativeToolTip": "OpenGL_submarine\\Camera.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -158,11 +201,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "OpenGL_submarine.cpp",
-              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp",
+              "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\OpenGL_submarine.cpp",
-              "ToolTip": "C:\\Users\\vladb\\Documents\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp",
+              "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp",
               "RelativeToolTip": "OpenGL_submarine\\OpenGL_submarine.cpp",
-              "ViewState": "AQIAAFMAAAAAAAAAAAApwGQAAAAJAAAA",
+              "ViewState": "AQIAAMwAAAAAAAAAAAAYwLgAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-26T18:20:12.381Z",
               "EditorCaption": ""

@@ -13,6 +13,8 @@ uniform float diffuseConstant;
 uniform float specularConstant;
 uniform float shininess;
 
+uniform samplerCube skybox;
+
 void main()
 {
     vec3 dx = dFdx(FragPos);
@@ -29,5 +31,21 @@ void main()
 
     vec3 result = (ambient* 0.1 * vec3(0.0,0.5,1.0) + diffuseConstant * diffuse * vec3(0.0,0.5,1.0)+ specularConstant * specular * lightColor);
 
-    FragColor = vec4(result, 1.0);
+    vec4 color = vec4(result, 0.1);
+
+    if(viewPos.y>0)
+    {
+        vec3 I = normalize(FragPos - viewPos);
+        vec3 R = reflect(I, normalize(normal));
+        vec4 reflexion = vec4(texture(skybox, R).rgb, 0.1);
+        FragColor = mix(reflexion , color , 0.2);
+    }
+    else
+    {
+        float ratio = 1.0 / 1.33;
+        vec3 Ir = normalize(FragPos - viewPos);
+        vec3 Rr = refract(Ir, normalize(normal), ratio);
+        vec4 refraction = vec4(texture(skybox, Rr).rgb, 0.1);
+        FragColor = mix(refraction , color , 0.2);
+    }
 }
