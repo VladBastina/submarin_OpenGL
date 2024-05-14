@@ -115,5 +115,6 @@ public:
 		indices.clear();
 		glDeleteVertexArrays(1, &oceanVAO);
 		glDeleteBuffers(1, &oceanVBO);
+		std::cout << "Ocean deleted"<<std::endl;
 	}
 };

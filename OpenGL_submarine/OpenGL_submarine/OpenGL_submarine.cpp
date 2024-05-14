@@ -93,12 +93,12 @@ int main(int argc, char** argv)
 
 	std::vector<std::string> faces
 	{
-		"right.jpg",
-		"left.jpg",
-		"top.jpg",
-		"down.jpg",
-		"front.jpg",
-		"back.jpg"
+		"px.png",
+		"nx.png",
+		"py.png",
+		"ny.png",
+		"pz.png",
+		"nz.png"
 	};
 
 	std::vector<GerstnerWave> waves = {
@@ -149,7 +149,7 @@ int main(int argc, char** argv)
 	SkyBox* skybox = new SkyBox(skyboxtextureID);
 	
 	// Create camera
-	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 3.0));
+	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 0.0));
 
 	glm::vec3 lightPos(0.0f, 20.0f, 0.0f);
 	glm::vec3 lightColor(1.0f, 0.8f, 0.4f);
@@ -166,7 +166,7 @@ int main(int argc, char** argv)
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//skybox->RenderSkybox(pCamera);
+		skybox->RenderSkybox(pCamera);
 
 		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves);
 

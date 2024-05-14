@@ -69,10 +69,12 @@ public:
     void RenderSkybox(Camera* pcamera)
     {
         glDepthFunc(GL_LEQUAL);
+		glDepthMask(GL_FALSE);
         skyboxShader->Use();
         glm::mat4 view = glm::mat4(glm::mat3(pcamera->GetViewMatrix()));
         skyboxShader->SetMat4("view", view);
         skyboxShader->SetMat4("projection", pcamera->GetProjectionMatrix());
+		skyboxShader->SetInt("skybox", 0);
 
         glBindVertexArray(skyboxVAO);
 		glActiveTexture(GL_TEXTURE0);
@@ -80,6 +82,7 @@ public:
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
         glBindVertexArray(0);
+		glDepthMask(GL_TRUE);
         glDepthFunc(GL_LESS);
     }
 
@@ -88,6 +91,7 @@ public:
         glDeleteVertexArrays(1, &skyboxVAO);
         glDeleteBuffers(1, &skyboxVBO);
         delete skyboxShader;
+		std::cout << "Skybox deleted"<<std::endl;
     }
 
 private:

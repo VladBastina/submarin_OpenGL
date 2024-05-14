@@ -27,7 +27,7 @@ void main()
     float specular = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
     float ambient = ambientReflection;
 
-    vec3 result = (ambient * vec3(0.0,0.5,1.0) + diffuseConstant * diffuse * vec3(0.0,0.5,1.0)+ specularConstant * specular * lightColor);
+    vec3 result = (ambient* 0.1 * vec3(0.0,0.5,1.0) + diffuseConstant * diffuse * vec3(0.0,0.5,1.0)+ specularConstant * specular * lightColor);
 
     FragColor = vec4(result, 1.0);
 }
