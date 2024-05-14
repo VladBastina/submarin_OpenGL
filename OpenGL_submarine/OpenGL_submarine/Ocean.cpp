@@ -162,7 +162,7 @@ public:
 		glBindVertexArray(oceanVAO);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-		glActiveTexture(GL_TEXTURE0);
+		//glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTextureID);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
@@ -182,11 +182,13 @@ public:
 		glBindVertexArray(terrainVAO);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glActiveTexture(GL_TEXTURE0);
+		terrainShader->SetInt("texture1", 0);
 		glBindTexture(GL_TEXTURE_2D, stonesTextureID);
 
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, causticstextureID);
+		glActiveTexture(GL_TEXTURE0 +1);
 
+		glBindTexture(GL_TEXTURE_2D, causticstextureID);
+		terrainShader->SetInt("texture2", 1);
 		glDrawElements(GL_TRIANGLES, terrainIndices.size(), GL_UNSIGNED_INT, 0);
 
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
