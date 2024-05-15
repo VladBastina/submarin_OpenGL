@@ -58,7 +58,7 @@ void main()
     else
     {
         vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
-        vec4 baseColor = mix(black, color, mixValue);
+        vec4 baseColor = color;
 
         float ratio = 1.0 / 1.33;
         vec3 Ir = normalize(FragPos - viewPos);
@@ -70,6 +70,6 @@ void main()
         fogFactor = clamp(fogFactor, 0.0, 1.0);
         vec3 finalColor = mix(fogColor, mix(refraction.rgb, baseColor.rgb, 0.2), fogFactor);
 
-        FragColor = vec4(finalColor, baseColor.a);
+        FragColor =mix(black,vec4(finalColor, baseColor.a),mixValue);
     }
 }

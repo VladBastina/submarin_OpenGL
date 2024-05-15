@@ -281,6 +281,7 @@ public:
 		wallShader->SetVec3("fogColor", glm::vec3(0.0f, 0.12f, 0.25f));
 		wallShader->SetFloat("fogDensity", 0.1f);
 		wallShader->SetVec3("viewPos", pCamera->GetPosition());
+		wallShader->SetFloat("mixValue", mixValue);
 
 		wallShader->SetMat4("model", modelWall);
 		glBindVertexArray(wallVAO);

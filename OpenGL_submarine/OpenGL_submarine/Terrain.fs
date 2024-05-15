@@ -12,6 +12,7 @@ in vec3 FragPos;
 
 void main()
 {
+    vec4 black = vec4(0.0,0.0,0.0,1.0);
     float x = abs(FragPos.x);
     float z = abs(FragPos.z);
 
@@ -33,5 +34,5 @@ void main()
 
     vec3 finalColor = mix(fogColor, baseColor.rgb, fogFactor);
 
-    FragColor = vec4(finalColor, baseColor.a);
+    FragColor = mix(black,vec4(finalColor, baseColor.a),mixValue);
 }
