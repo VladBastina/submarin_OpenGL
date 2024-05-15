@@ -1,9 +1,7 @@
 ﻿#define STB_IMAGE_IMPLEMENTATION
-#include <Windows.h>
-#include <locale>
-#include <codecvt>
 #include "Skybox.cpp"
 #include "Model.h"
+#include "Submarine.cpp"
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 float kaValue = 0.5f;
@@ -157,21 +155,7 @@ int main(int argc, char** argv)
 
 
 
-	wchar_t buffer[MAX_PATH];
-	GetCurrentDirectoryW(MAX_PATH, buffer);
-
-	std::wstring executablePath(buffer);
-	std::wstring wscurrentPath = executablePath.substr(0, executablePath.find_last_of(L"\\/"));
-
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-	std::string currentPath = converter.to_bytes(wscurrentPath);
-
-	Shader* lightingShader=new Shader((currentPath + "\\Shaders\\PhongLight.vs").c_str(), (currentPath + "\\Shaders\\PhongLight.fs").c_str());
-
-	std::string submarineObjFileName = (currentPath + "\\Models\\Submarine\\submarine.obj");
-
-	Model submarineObjModel(submarineObjFileName);
-
+	Submarine submarine;
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
 		// per-frame time logic
@@ -190,15 +174,8 @@ int main(int argc, char** argv)
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves);
 
 
-
-		lightingShader->Use();
-		lightingShader->SetMat4("projection", pCamera->GetProjectionMatrix());
-		lightingShader->SetMat4("view", pCamera->GetViewMatrix());
-
-		glm::mat4 submarineModel = glm::scale(glm::mat4(1.0), glm::vec3(1.f));
-		lightingShader->SetMat4("model", submarineModel);
-
-		submarineObjModel.Draw(lightingShader);
+		submarine.Render(pCamera);
+	
 
 
 

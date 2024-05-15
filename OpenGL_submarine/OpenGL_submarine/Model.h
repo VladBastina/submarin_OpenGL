@@ -28,6 +28,7 @@ class Model
 public:
     /*  Functions   */
     // Constructor, expects a filepath to a 3D model.
+    Model() = default;
     Model(string const& path)
     {
         this->loadModel(path);

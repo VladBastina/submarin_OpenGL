@@ -1,3 +1,4 @@
+#pragma once
 #include <stdlib.h> // necesare pentru citirea shader-elor
 #include <stdio.h>
 #include <math.h> 

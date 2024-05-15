@@ -5,4 +5,9 @@ C:\Users\CRISTI\Desktop\gfh\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Oc
 C:\Users\CRISTI\Desktop\gfh\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Mesh.h(88,56): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'OpenGL_submarine.cpp')
   
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+  (compiling source file 'OpenGL_submarine.cpp')
+  C:\Users\CRISTI\Desktop\gfh\submarin_OpenGL\_external\glfw-3.4.bin.WIN64\include\GLFW\glfw3.h(123,1):
+  see previous definition of 'APIENTRY'
+  
   OpenGL_submarine.vcxproj -> C:\Users\CRISTI\Desktop\gfh\submarin_OpenGL\OpenGL_submarine\x64\Debug\OpenGL_submarine.exe
