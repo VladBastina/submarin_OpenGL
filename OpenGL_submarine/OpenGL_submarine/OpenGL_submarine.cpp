@@ -228,6 +228,13 @@ int main(int argc, char** argv)
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		glm::vec3 position = pCamera->GetPosition();
+
+		if (position.x < (-166.6f) || position.x>(166.6f) || position.z < (-166.6f) || position.z>166.6f)
+		{
+			pCamera->SetPosition(glm::vec3(0.0f, position.y, 0.0f));
+		}
+
 		skybox->RenderSkybox(pCamera);
 
 		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());

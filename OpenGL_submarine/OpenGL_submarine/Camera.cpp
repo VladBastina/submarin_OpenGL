@@ -96,6 +96,11 @@ public:
 		return position;
 	}
 
+	void SetPosition(glm::vec3 value)
+	{
+		position = value;
+	}
+
 	const glm::mat4 GetProjectionMatrix() const
 	{
 		glm::mat4 Proj = glm::mat4(1);

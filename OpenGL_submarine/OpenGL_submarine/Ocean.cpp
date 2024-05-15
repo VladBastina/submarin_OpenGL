@@ -79,10 +79,10 @@ public:
 
 		int numpoints = 0;
 
-		for (float k = -100.0f; k < 100.0f; k += 0.5f)
+		for (float k = -250.0f; k < 250.0f; k += 0.5f)
 		{
 			numpoints++;
-			for (float i = -100.0f; i < 100.0f; i +=0.5f)
+			for (float i = -250.0f; i < 250.0f; i +=0.5f)
 			{
 				double height = (perlinNoise->noise(k/10, 0.0, i/10))*10.0;
 				terrainPoints.push_back(k);
@@ -190,6 +190,8 @@ public:
 	{
 		glm::mat4 model = glm::mat4(1.0);
 
+		glm::mat4 waterModel = glm::translate(glm::mat4(1.0), glm::vec3(pCamera->GetPosition().x, 0.0, pCamera->GetPosition().z));
+
 		oceanShader->Use();
 		glm::mat4 projection = pCamera->GetProjectionMatrix();
 		glm::mat4 view = pCamera->GetViewMatrix();
@@ -222,7 +224,7 @@ public:
 		oceanShader->SetVec3("fogColor", glm::vec3(0.0f, 0.12f, 0.25f));
 		oceanShader->SetFloat("fogDensity", 0.07f);
 
-		oceanShader->SetMat4("model", model);
+		oceanShader->SetMat4("model", waterModel);
 		glBindVertexArray(oceanVAO);
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -271,7 +273,7 @@ public:
 
 		translationMatrix = glm::translate(glm::mat4(1.0), glm::vec3(0.0, 0.0, -100.0));
 
-		glm::mat4 modelWall =translationMatrix * glm::mat4(1.0f);
+		glm::mat4 modelWall = waterModel * translationMatrix * glm::mat4(1.0f);
 
 		wallShader->Use();
 		wallShader->SetMat4("projection", projection);
@@ -289,19 +291,19 @@ public:
 
 		translationMatrix = glm::translate(glm::mat4(1.0), glm::vec3(0.0, 0.0, 100.0));
 
-		modelWall = translationMatrix * glm::mat4(1.0f);
+		modelWall =waterModel* translationMatrix * glm::mat4(1.0f);
 		wallShader->SetMat4("model", modelWall);
 		glDrawElements(GL_TRIANGLES, wallIndices.size(), GL_UNSIGNED_INT, 0);
 
 		translationMatrix = glm::translate(glm::mat4(1.0), glm::vec3(100.0, 0.0, 0.0));
 		glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0), glm::pi<float>() / 2, glm::vec3(0.0f, 1.0f, 0.0f));
-		modelWall = translationMatrix *rotationMatrix * glm::mat4(1.0f);
+		modelWall = waterModel * translationMatrix *rotationMatrix * glm::mat4(1.0f);
 		wallShader->SetMat4("model", modelWall);
 		glDrawElements(GL_TRIANGLES, wallIndices.size(), GL_UNSIGNED_INT, 0);
 
 		translationMatrix = glm::translate(glm::mat4(1.0), glm::vec3(-100.0, 0.0, 0.0));
 		rotationMatrix = glm::rotate(glm::mat4(1.0), glm::pi<float>() / 2, glm::vec3(0.0f, 1.0f, 0.0f));
-		modelWall = translationMatrix * rotationMatrix * glm::mat4(1.0f);
+		modelWall =waterModel * translationMatrix * rotationMatrix * glm::mat4(1.0f);
 		wallShader->SetMat4("model", modelWall);
 		glDrawElements(GL_TRIANGLES, wallIndices.size(), GL_UNSIGNED_INT, 0);
 
