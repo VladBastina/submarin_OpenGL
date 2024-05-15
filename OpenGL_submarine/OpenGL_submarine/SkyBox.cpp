@@ -63,6 +63,8 @@ public:
 
         glBindVertexArray(0);
 
+		mixValue = 1.0f;
+
         skyboxShader = new Shader("SkyBox.vs", "SkyBox.fs");
     }
 
@@ -74,6 +76,7 @@ public:
         glm::mat4 view = glm::mat4(glm::mat3(pcamera->GetViewMatrix()));
         skyboxShader->SetMat4("view", view);
         skyboxShader->SetMat4("projection", pcamera->GetProjectionMatrix());
+		skyboxShader->SetFloat("mixValue", mixValue);
 		skyboxShader->SetInt("skybox", 0);
 
         glBindVertexArray(skyboxVAO);
@@ -94,7 +97,18 @@ public:
 		std::cout << "Skybox deleted"<<std::endl;
     }
 
+	float getMixValue()
+	{
+		return mixValue;
+	}
+
+	void setMixValue(float value)
+	{
+		mixValue = value;
+	}
+
 private:
+	float mixValue;
     unsigned int skyboxVAO, skyboxVBO;
     unsigned int textureID;
     Shader* skyboxShader;

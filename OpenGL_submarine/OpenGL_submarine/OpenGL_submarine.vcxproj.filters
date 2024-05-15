@@ -47,5 +47,11 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="Terrain.fs" />
+    <None Include="Wall.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Wall.fs">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

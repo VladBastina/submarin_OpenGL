@@ -9,6 +9,7 @@ const unsigned int SCR_HEIGHT = 600;
 
 
 Camera* pCamera = nullptr;
+SkyBox* skybox= nullptr;
 
 void Cleanup()
 {
@@ -69,8 +70,8 @@ unsigned int CreateTexture(const std::string& strTexturePath)
 		glGenerateMipmap(GL_TEXTURE_2D);
 
 		// set the texture wrapping parameters
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, format == GL_RGBA ? GL_CLAMP_TO_EDGE : GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		// set texture filtering parameters
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -116,6 +117,28 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		glfwGetWindowSize(window, &width, &height);
 		pCamera->Reset(width, height);
 
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+	{
+		float mixValue = skybox->getMixValue();
+		mixValue += 0.1f;
+		if (mixValue > 1.0f)
+		{
+			mixValue = 1.0f;
+		}
+		skybox->setMixValue(mixValue);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
+	{
+		float mixValue = skybox->getMixValue();
+		mixValue -= 0.1f;
+		if (mixValue < 0.1f)
+		{
+			mixValue = 0.1f;
+		}
+		skybox->setMixValue(mixValue);
 	}
 }
 
@@ -177,15 +200,15 @@ int main(int argc, char** argv)
 	glewInit();
 
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	unsigned int skyboxtextureID = loadSkyboxTexture(faces,strExePath);
 	unsigned int stonestextureID = CreateTexture(strExePath + "\\pietris.png");
 	unsigned int causticstextureID = CreateTexture(strExePath + "\\caustic.png");
 
 	Ocean* ocean = new Ocean();
-	SkyBox* skybox = new SkyBox(skyboxtextureID);
+	skybox = new SkyBox(skyboxtextureID);
 	
 	// Create camera
 	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 0.0));
@@ -207,7 +230,7 @@ int main(int argc, char** argv)
 
 		skybox->RenderSkybox(pCamera);
 
-		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID);
+		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		glfwSwapBuffers(window);
