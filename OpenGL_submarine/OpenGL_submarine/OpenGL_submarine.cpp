@@ -1,11 +1,12 @@
 ﻿#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
-#include <map>
-
+#include <Windows.h>
+#include <locale>
+#include <codecvt>
 #include "Skybox.cpp"
-
+#include "Model.h"
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+float kaValue = 0.5f;
 
 
 Camera* pCamera = nullptr;
@@ -154,6 +155,23 @@ int main(int argc, char** argv)
 	glm::vec3 lightPos(0.0f, 20.0f, 0.0f);
 	glm::vec3 lightColor(1.0f, 0.8f, 0.4f);
 
+
+
+	wchar_t buffer[MAX_PATH];
+	GetCurrentDirectoryW(MAX_PATH, buffer);
+
+	std::wstring executablePath(buffer);
+	std::wstring wscurrentPath = executablePath.substr(0, executablePath.find_last_of(L"\\/"));
+
+	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+	std::string currentPath = converter.to_bytes(wscurrentPath);
+
+	Shader* lightingShader=new Shader((currentPath + "\\Shaders\\PhongLight.vs").c_str(), (currentPath + "\\Shaders\\PhongLight.fs").c_str());
+
+	std::string submarineObjFileName = (currentPath + "\\Models\\Submarine\\submarine.obj");
+
+	Model submarineObjModel(submarineObjFileName);
+
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
 		// per-frame time logic
@@ -163,12 +181,27 @@ int main(int argc, char** argv)
 
 		// input
 		processInput(window);
-
+		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
 
 		skybox->RenderSkybox(pCamera);
 
-		ocean->RenderOcean(pCamera, lightPos,lightColor , currentFrame, waves);
+		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves);
+
+
+
+		lightingShader->Use();
+		lightingShader->SetMat4("projection", pCamera->GetProjectionMatrix());
+		lightingShader->SetMat4("view", pCamera->GetViewMatrix());
+
+		glm::mat4 submarineModel = glm::scale(glm::mat4(1.0), glm::vec3(1.f));
+		lightingShader->SetMat4("model", submarineModel);
+
+		submarineObjModel.Draw(lightingShader);
+
+
+
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		glfwSwapBuffers(window);

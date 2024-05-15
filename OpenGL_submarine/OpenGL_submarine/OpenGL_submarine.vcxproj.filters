@@ -8,6 +8,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{629b1e3a-e383-48b4-b6ae-7c1f9884dd36}</UniqueIdentifier>
     </Filter>
+    <Filter Include="NewFilter1">
+      <UniqueIdentifier>{6efaf4e6-8435-4231-ac41-53623e56dbed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL_submarine.cpp">
@@ -40,5 +43,19 @@
     <None Include="SkyBox.fs">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="packages.config" />
+    <None Include="..\..\..\..\ViewOBJModel\Shaders\PhongLight.fs">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\..\..\ViewOBJModel\Shaders\PhongLight.vs">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
   </ItemGroup>
 </Project>
