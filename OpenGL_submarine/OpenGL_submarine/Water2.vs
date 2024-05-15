@@ -34,7 +34,7 @@ void main()
         displacedPosition += vec3(displacementX / 10, displacementY  / 10, displacementZ / 10);
     }
 
-    FragPos = displacedPosition;
+    FragPos = vec3 (model * vec4(displacedPosition,1.0));
 
     gl_Position = projection * view * model * vec4(displacedPosition, 1.0);
 }

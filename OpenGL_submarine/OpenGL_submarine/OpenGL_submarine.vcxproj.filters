@@ -31,6 +31,9 @@
     <ClCompile Include="SkyBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PerlinNoise.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Water.fs" />
@@ -57,5 +60,15 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
+    <None Include="Terrain.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Terrain.fs" />
+    <None Include="Wall.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Wall.fs">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

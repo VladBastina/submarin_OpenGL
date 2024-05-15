@@ -1,4 +1,4 @@
-﻿#define STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_IMPLEMENTATION
 #include "Skybox.cpp"
 #include "Model.h"
 #include "Submarine.cpp"
@@ -8,6 +8,7 @@ float kaValue = 0.5f;
 
 
 Camera* pCamera = nullptr;
+SkyBox* skybox= nullptr;
 
 void Cleanup()
 {
@@ -45,6 +46,43 @@ unsigned int loadSkyboxTexture(const std::vector<std::string>& faces, std::strin
 	return textureID;
 }
 
+unsigned int CreateTexture(const std::string& strTexturePath)
+{
+	unsigned int textureId = -1;
+
+	// load image, create texture and generate mipmaps
+	int width, height, nrChannels;
+	//stbi_set_flip_vertically_on_load(true); // tell stb_image.h to flip loaded texture's on the y-axis.
+	unsigned char* data = stbi_load(strTexturePath.c_str(), &width, &height, &nrChannels, 0);
+	if (data) {
+		GLenum format;
+		if (nrChannels == 1)
+			format = GL_RED;
+		else if (nrChannels == 3)
+			format = GL_RGB;
+		else if (nrChannels == 4)
+			format = GL_RGBA;
+
+		glGenTextures(1, &textureId);
+		glBindTexture(GL_TEXTURE_2D, textureId);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		// set the texture wrapping parameters
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		// set texture filtering parameters
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	}
+	else {
+		std::cout << "Failed to load texture: " << strTexturePath << std::endl;
+	}
+	stbi_image_free(data);
+
+	return textureId;
+}
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
@@ -78,6 +116,28 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		glfwGetWindowSize(window, &width, &height);
 		pCamera->Reset(width, height);
 
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+	{
+		float mixValue = skybox->getMixValue();
+		mixValue += 0.1f;
+		if (mixValue > 1.0f)
+		{
+			mixValue = 1.0f;
+		}
+		skybox->setMixValue(mixValue);
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
+	{
+		float mixValue = skybox->getMixValue();
+		mixValue -= 0.1f;
+		if (mixValue < 0.1f)
+		{
+			mixValue = 0.1f;
+		}
+		skybox->setMixValue(mixValue);
 	}
 }
 
@@ -139,13 +199,15 @@ int main(int argc, char** argv)
 	glewInit();
 
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	unsigned int skyboxtextureID = loadSkyboxTexture(faces,strExePath);
+	unsigned int stonestextureID = CreateTexture(strExePath + "\\pietris.png");
+	unsigned int causticstextureID = CreateTexture(strExePath + "\\caustic.png");
 
 	Ocean* ocean = new Ocean();
-	SkyBox* skybox = new SkyBox(skyboxtextureID);
+	skybox = new SkyBox(skyboxtextureID);
 	
 	// Create camera
 	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 0.0));
@@ -169,9 +231,16 @@ int main(int argc, char** argv)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 
+		glm::vec3 position = pCamera->GetPosition();
+
+		if (position.x < (-166.6f) || position.x>(166.6f) || position.z < (-166.6f) || position.z>166.6f)
+		{
+			pCamera->SetPosition(glm::vec3(0.0f, position.y, 0.0f));
+		}
+
 		skybox->RenderSkybox(pCamera);
 
-		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves);
+		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
 
 
 		submarine.Render(pCamera);
