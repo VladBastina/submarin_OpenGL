@@ -34,13 +34,20 @@ public:
 	{
 		this->increasePosition=
 	}*/
-	void Render(Camera* pCamera)
+	void Render(Camera* pCamera,glm::vec3 lightPos)
 	{
 		submarineShader->Use();
 		submarineShader->SetMat4("projection", pCamera->GetProjectionMatrix());
 		submarineShader->SetMat4("view", pCamera->GetViewMatrix());
 		glm::mat4 submarineModel = glm::scale(glm::mat4(1.0), glm::vec3(1.f));
 		submarineShader->SetMat4("model", submarineModel);
+		submarineShader->SetVec3("lightPos", lightPos);
+		submarineShader->SetVec3("lightColor", glm::vec3(1.0f, 0.8f, 0.4f));
+		submarineShader->SetVec3("viewPos", pCamera->GetPosition());
+		submarineShader->SetFloat("ambientReflection", 0.3f);
+		submarineShader->SetFloat("diffuseConstant", 1.0f);
+		submarineShader->SetFloat("specularConstant", 1.0f);
+		submarineShader->SetFloat("shininess", 1000.0f);
 		submarine.Draw(submarineShader);
 
 

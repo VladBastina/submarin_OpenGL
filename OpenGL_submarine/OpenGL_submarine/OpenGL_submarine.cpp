@@ -1,7 +1,11 @@
-#define STB_IMAGE_IMPLEMENTATION
 #include "Skybox.cpp"
-#include "Model.h"
 #include "Submarine.cpp"
+
+#include <irrKlang.h>
+using namespace irrklang;
+
+#pragma comment (lib, "irrKlang.lib")
+
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 float kaValue = 0.5f;
@@ -209,23 +213,61 @@ int main(int argc, char** argv)
 	Ocean* ocean = new Ocean();
 	skybox = new SkyBox(skyboxtextureID);
 	
+	ISoundEngine* SoundEngine = createIrrKlangDevice();
+
 	// Create camera
 	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 0.0));
+	float lastY = pCamera->GetPosition().y;
 
-	glm::vec3 lightPos(0.0f, 20.0f, 0.0f);
+	glm::vec3 lightPos(0.0f, 5.0f, 0.0f);
 	glm::vec3 lightColor(1.0f, 0.8f, 0.4f);
 
-
+	std::string seagul_sound = strExePath + "\\seagul_sound.mp3";
+	std::string splash_sound = strExePath + "\\splash_water.mp3";
+	std::string sonar_sound = strExePath + "\\sonar.mp3";
+	std::string underwater_sound = strExePath + "\\underwater.mp3";
+	bool sound = false;
 
 	Submarine submarine;
-	// render loop
 	while (!glfwWindowShouldClose(window)) {
-		// per-frame time logic
 		double currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 
-		// input
+		float currentY = pCamera->GetPosition().y;
+
+		if ((currentY < -1.0f && lastY >= -1.0f) ||
+			(currentY >= -1.0f && lastY < -1.0f) ||
+			(currentY <= 1.0f && lastY > 1.0f) ||
+			(currentY > 1.0f && lastY <= 1.0f))
+		{
+			sound = false;
+		}
+
+		if (sound == false)
+		{
+			SoundEngine->stopAllSounds();
+
+			if (currentY < -1.0f)
+			{
+				sound = true;
+				SoundEngine->play2D(underwater_sound.c_str(), true);
+				SoundEngine->play2D(sonar_sound.c_str(), true);
+			}
+			else if (currentY >= -1.0f && currentY <= 1.0f)
+			{
+				sound = true;
+				SoundEngine->play2D(splash_sound.c_str(), true);
+			}
+			else
+			{
+				sound = true;
+				SoundEngine->play2D(seagul_sound.c_str(), true);
+			}
+		}
+
+		lastY = currentY;
+
 		processInput(window);
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -243,7 +285,7 @@ int main(int argc, char** argv)
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
 
 
-		submarine.Render(pCamera);
+		submarine.Render(pCamera,lightPos);
 	
 
 
@@ -258,6 +300,7 @@ int main(int argc, char** argv)
 	Cleanup();
 	delete ocean;
 	delete skybox;
+	SoundEngine->drop();
 
 	// glfw: terminate, clearing all previously allocated GLFW resources
 	glfwTerminate();
