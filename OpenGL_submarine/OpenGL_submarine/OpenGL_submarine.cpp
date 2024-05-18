@@ -1,6 +1,4 @@
-#define STB_IMAGE_IMPLEMENTATION
 #include "Skybox.cpp"
-#include "Model.h"
 #include "Submarine.cpp"
 
 #include <irrKlang.h>
@@ -231,9 +229,7 @@ int main(int argc, char** argv)
 	bool sound = false;
 
 	Submarine submarine;
-	// render loop
 	while (!glfwWindowShouldClose(window)) {
-		// per-frame time logic
 		double currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
@@ -289,7 +285,7 @@ int main(int argc, char** argv)
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
 
 
-		submarine.Render(pCamera);
+		submarine.Render(pCamera,lightPos);
 	
 
 
