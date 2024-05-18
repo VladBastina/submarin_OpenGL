@@ -1,8 +1,9 @@
 #version 330 core
 
 in vec2 TexCoords;
+in vec3 FragPos
 
-out vec4 color;
+out vec4 FragColor;
 
 const vec3 ambientColor = vec3(0.2, 0.2, 0.2);
 
@@ -39,6 +40,6 @@ vec3 dx = dFdx(FragPos);
 
     vec4 textureColor = vec4(texture(texture_diffuse, TexCoords));
 
-    color=mix(color,textureColor,0.5);
+    FragColor=mix(color,textureColor,0.5);
 
 } 

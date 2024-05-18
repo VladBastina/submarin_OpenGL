@@ -219,7 +219,7 @@ int main(int argc, char** argv)
 	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 0.0));
 	float lastY = pCamera->GetPosition().y;
 
-	glm::vec3 lightPos(0.0f, 20.0f, 0.0f);
+	glm::vec3 lightPos(0.0f, 5.0f, 0.0f);
 	glm::vec3 lightColor(1.0f, 0.8f, 0.4f);
 
 	std::string seagul_sound = strExePath + "\\seagul_sound.mp3";
