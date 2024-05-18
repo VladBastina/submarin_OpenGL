@@ -1,7 +1,7 @@
 #version 330 core
 
 in vec2 TexCoords;
-in vec3 FragPos
+in vec3 FragPos;
 
 out vec4 FragColor;
 
@@ -19,8 +19,7 @@ uniform sampler2D texture_diffuse;
 
 void main()
 {
-
-vec3 dx = dFdx(FragPos);
+    vec3 dx = dFdx(FragPos);
     vec3 dy = dFdy(FragPos);
     vec3 normal = normalize(cross(dx, dy));
 
@@ -28,18 +27,17 @@ vec3 dx = dFdx(FragPos);
     vec3 viewDir = normalize(viewPos - FragPos);
     vec3 reflectDir = reflect(-lightDir, normal);
 
-    float diffuse = max(dot(normal, lightDir), 0.0);
-    float specular = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
-    float ambient = ambientReflection;
+    vec3 ambient = ambientReflection * ambientColor;
 
-    vec3 result = (ambient * ambientColor + 
-                  diffuseConstant * diffuse * vec3(0.0, 0.5, 1.0) + 
-                  specularConstant * specular * lightColor);
+    float diff = max(dot(normal, lightDir), 0.0);
+    vec3 diffuse = diffuseConstant * diff * lightColor;
 
-    vec4 color = vec4(result, 1.0);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
+    vec3 specular = specularConstant * spec * lightColor;
 
-    vec4 textureColor = vec4(texture(texture_diffuse, TexCoords));
+    vec3 result = ambient + diffuse + specular;
 
-    FragColor=mix(color,textureColor,0.5);
+    vec4 textureColor = texture(texture_diffuse, TexCoords);
 
-} 
+    FragColor = mix(vec4(result, 1.0), textureColor, textureColor.a);
+}
