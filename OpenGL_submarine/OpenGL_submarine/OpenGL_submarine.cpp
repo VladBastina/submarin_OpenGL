@@ -173,7 +173,7 @@ int main(int argc, char** argv)
 
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves);
 
-
+		submarine.ProcessInput(window, deltaTime);
 		submarine.Render(pCamera);
 	
 
