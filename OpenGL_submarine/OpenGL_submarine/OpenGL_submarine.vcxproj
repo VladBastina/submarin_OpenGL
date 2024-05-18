@@ -131,12 +131,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Texture_utils.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Submarine.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GerstnerWave.cpp" />
     <ClCompile Include="Ocean.cpp" />
     <ClCompile Include="OpenGL_submarine.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SkyBox.cpp" />
+    <ClCompile Include="SubmarineCamera.cpp" />
+    <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\ViewOBJModel\Shaders\PhongLight.fs">
@@ -165,6 +170,8 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Submarine.h" />
+    <ClInclude Include="SubmarineCamera.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>

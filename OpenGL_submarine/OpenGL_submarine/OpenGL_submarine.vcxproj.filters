@@ -31,6 +31,21 @@
     <ClCompile Include="SkyBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Submarine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SubmarineCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Texture_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Water.fs" />
@@ -57,5 +72,9 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="SubmarineCamera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Submarine.h" />
   </ItemGroup>
 </Project>

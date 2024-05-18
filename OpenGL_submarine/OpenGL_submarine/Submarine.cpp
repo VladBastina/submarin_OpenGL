@@ -1,28 +1,6 @@
-﻿#pragma once
-
-#include <Windows.h>
-#include <locale>
-#include <codecvt>
-#include "Camera.cpp"
-#include "Model.h"
-
-
-const float maxSpeed = 10.0f;
-const float accelerationRate = 0.5f;
-const float decelerationRate = 0.5f;
-const float rotationSpeed = 30.0f;
-const float rollAngle = 10.0f;
-const float maxPitchAngle = 20.0f;
-const float pitchRate = 5.0f;
-const float verticalSpeedModifier = 0.5f;
-const float verticalSpeed = 5.0f;
-const float maxDepth = -100.0f; 
-const float surfaceLevel = 0.0f; 
-class Submarine
-{
-public:
-	Model submarine;
-	Submarine():position(glm::vec3(0.0f,0.0f,0.0f)), rotationYaw(0.0f), rotationPitch(0.0f),acceleration(0.0f),currentSpeed(0.0f),rotationRoll(0.0f)
+#include "Submarine.h"
+#include "SubmarineCamera.h"
+	Submarine::Submarine() :position(glm::vec3(0.0f, 0.0f, 0.0f)), rotationYaw(0.0f), rotationPitch(0.0f), acceleration(0.0f), currentSpeed(0.0f), rotationRoll(0.0f)
 	{
 		wchar_t buffer[MAX_PATH];
 		GetCurrentDirectoryW(MAX_PATH, buffer);
@@ -37,7 +15,7 @@ public:
 		submarine = Model(submarineObjFileName);
 	}
 
-	void ProcessInput(GLFWwindow* window, float deltaTime)
+	void Submarine::ProcessInput(GLFWwindow* window, float deltaTime)
 	{
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		{
@@ -97,7 +75,7 @@ public:
 		if (currentSpeed > 0.0f)
 		{
 			glm::vec3 forwardMovement = glm::vec3(sin(glm::radians(rotationYaw)), 0.0f, cos(glm::radians(rotationYaw))) * currentSpeed * deltaTime;
-			glm::vec3 verticalMovement = glm::vec3(0.0f, -sin(glm::radians(rotationPitch))*  5.0f* currentSpeed * deltaTime, 0.0f);
+			glm::vec3 verticalMovement = glm::vec3(0.0f, -sin(glm::radians(rotationPitch)) * 5.0f * currentSpeed * deltaTime, 0.0f);
 
 			position += forwardMovement + verticalMovement;
 
@@ -108,26 +86,32 @@ public:
 		}
 	}
 
-	void Render(Camera* pCamera)
+	void Submarine::Render(SubmarineCamera* camera)
 	{
 		submarineShader->Use();
-		submarineShader->SetMat4("projection", pCamera->GetProjectionMatrix());
-		submarineShader->SetMat4("view", pCamera->GetViewMatrix());
+		submarineShader->SetMat4("projection", camera->GetProjectionMatrix());
+		submarineShader->SetMat4("view", camera->GetViewMatrix());
 		glm::mat4 submarineModel = glm::mat4(1.0f);
-		submarineModel = glm::translate(submarineModel, position);
+		submarineModel = glm::translate(submarineModel,position);
 		submarineModel = glm::rotate(submarineModel, glm::radians(rotationYaw), glm::vec3(0.0f, 1.0f, 0.0f));
 		submarineModel = glm::rotate(submarineModel, glm::radians(rotationPitch), glm::vec3(1.0f, 0.0f, 0.0f));
 		submarineModel = glm::rotate(submarineModel, glm::radians(rotationRoll), glm::vec3(0.0f, 0.0f, 1.0f));
 		submarineShader->SetMat4("model", submarineModel);
 		submarine.Draw(submarineShader);
-
-
 	}
-private:
-	Shader* submarineShader;
-	float rotationYaw, rotationPitch,acceleration, currentSpeed,rotationRoll;
-	glm::vec3 position;
+	glm::vec3 Submarine::GetPosition() const
+	{
+		return position;
+	}
+
+	float Submarine::RotationYaw() const
+	{
+		return rotationYaw;
+	}
+
+	float Submarine::RotationPitch() const
+	{
+		return rotationPitch;
+	}
 	
 
-
-};

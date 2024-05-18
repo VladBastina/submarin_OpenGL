@@ -1,7 +1,7 @@
 ﻿#define STB_IMAGE_IMPLEMENTATION
 #include "Skybox.cpp"
-#include "Model.h"
-#include "Submarine.cpp"
+#include "SubmarineCamera.h"
+#include "Submarine.h"
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 float kaValue = 0.5f;
@@ -12,6 +12,7 @@ Camera* pCamera = nullptr;
 void Cleanup()
 {
 	delete pCamera;
+	
 }
 
 unsigned int loadSkyboxTexture(const std::vector<std::string>& faces, std::string strExePath)
@@ -156,6 +157,7 @@ int main(int argc, char** argv)
 
 
 	Submarine submarine;
+	SubmarineCamera cameraSubmarine(&submarine, 10.0f, 10.0f, 0.0f);
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
 		// per-frame time logic
@@ -167,14 +169,15 @@ int main(int argc, char** argv)
 		processInput(window);
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
+		submarine.ProcessInput(window, deltaTime);
+
 
 		skybox->RenderSkybox(pCamera);
 
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves);
-
-		submarine.ProcessInput(window, deltaTime);
-		submarine.Render(pCamera);
+		
+		cameraSubmarine.updatePosition();
+		submarine.Render(&cameraSubmarine);
 	
 
 

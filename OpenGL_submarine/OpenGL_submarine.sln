@@ -5,6 +5,11 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGL_submarine", "OpenGL_submarine\OpenGL_submarine.vcxproj", "{29611158-B127-43E3-9F1D-DFF05B72B234}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30DCF50E-83B9-4621-9710-3E73F6E75F6A}"
+	ProjectSection(SolutionItems) = preProject
+		Texture_utils.h = Texture_utils.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
