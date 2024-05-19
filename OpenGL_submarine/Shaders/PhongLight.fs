@@ -14,6 +14,10 @@ uniform float ambientReflection;
 uniform float diffuseConstant;
 uniform float specularConstant;
 uniform float shininess;
+uniform float mixValue;
+
+uniform vec3 fogColor;
+uniform float fogDensity;
 
 uniform sampler2D texture_diffuse;
 
@@ -39,5 +43,15 @@ void main()
 
     vec4 textureColor = texture(texture_diffuse, TexCoords);
 
-    FragColor = mix(vec4(result, 1.0), textureColor, textureColor.a);
+    vec4 color = mix(vec4(result, 1.0), textureColor, 0.8);
+
+    vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
+    vec4 baseColor = color;
+
+    float distance = length(viewPos - FragPos);
+    float fogFactor = exp(-fogDensity * distance);
+    fogFactor = clamp(fogFactor, 0.0, 1.0);
+    vec3 finalColor = mix(fogColor,baseColor.rgb, fogFactor);
+
+    FragColor =mix(black,vec4(finalColor, baseColor.a),mixValue);
 }

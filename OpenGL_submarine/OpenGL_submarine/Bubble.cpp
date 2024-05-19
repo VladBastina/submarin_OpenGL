@@ -1,9 +1,6 @@
 ﻿#pragma once
 
-#include <GL/glew.h>
-#include <string>
-#include "Shader.h"
-#include "Camera.cpp"
+#include "Fish.h"
 
 class Bubble
 {
@@ -23,12 +20,12 @@ public:
 	}
 
 
-	void Render(Camera* pCamera)
+	void Render(SubmarineCamera* pCamera,float aspectRatio)
 	{
 		glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
 		glm::mat4 model = glm::mat4(1.0f) * translationMatrix;
 		bubbleShader->Use();
-		bubbleShader->SetMat4("projection", pCamera->GetProjectionMatrix());
+		bubbleShader->SetMat4("projection", pCamera->GetProjectionMatrix(aspectRatio));
 		bubbleShader->SetMat4("view", pCamera->GetViewMatrix());
 		bubbleShader->SetMat4("model", model);
 
@@ -88,7 +85,6 @@ private:
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 
-		std::cout << "Bubble VAO and VBO initialized successfully" << std::endl;
 	}
 
 };

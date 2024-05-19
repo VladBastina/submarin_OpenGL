@@ -34,6 +34,7 @@ void SubmarineCamera::updatePosition()
     float distance = 5.0f;
 
     position = calculateNewPoint(submarine->GetPosition(), direction, distance);
+    position += glm::vec3(0.0f, 5.0f, 0.0f);
     target = submarine->GetPosition();
 }
 void SubmarineCamera::SetDistanceFromTarget(float distance)

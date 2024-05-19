@@ -68,9 +68,14 @@
 
 		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
 		{
+<<<<<<< Updated upstream
 			if (rotationPitch > maxPitchAngle)
 				rotationPitch = maxPitchAngle;
 			rotationPitch += pitchRate * deltaTime;
+=======
+			if (rotationPitch < maxPitchAngle)
+				rotationPitch += pitchRate * deltaTime;
+>>>>>>> Stashed changes
 		}
 		else if (rotationPitch > 0.0f)
 		{
@@ -98,7 +103,7 @@
 		this->increasePosition=
 	}*/
 
-	void Submarine::Render(SubmarineCamera* camera,float aspectRatio)
+	void Submarine::Render(SubmarineCamera* camera,float aspectRatio,float mixValue)
 	{
 		submarineShader->Use();
 		submarineShader->SetMat4("projection", camera->GetProjectionMatrix(aspectRatio));
@@ -110,12 +115,15 @@
 		submarineModel = glm::rotate(submarineModel, glm::radians(rotationRoll), glm::vec3(0.0f, 0.0f, 1.0f));
 		submarineShader->SetMat4("model", submarineModel);
 		//submarineShader->SetVec3("lightPos", lightPos);
-		submarineShader->SetVec3("lightColor", glm::vec3(1.0f, 0.8f, 0.4f));
+		submarineShader->SetVec3("lightColor", glm::vec3(0.0f, 0.0f, 0.0f));
 		//submarineShader->SetVec3("viewPos", pCamera->GetPosition());
 		submarineShader->SetFloat("ambientReflection", 0.3f);
 		submarineShader->SetFloat("diffuseConstant", 1.0f);
 		submarineShader->SetFloat("specularConstant", 1.0f);
 		submarineShader->SetFloat("shininess", 1000.0f);
+		submarineShader->SetVec3("fogColor", glm::vec3(0.0f, 0.12f, 0.25f));
+		submarineShader->SetFloat("fogDensity", 0.0f);
+		submarineShader->SetFloat("mixValue", mixValue);
 		submarine.Draw(submarineShader);
 	}
 	glm::vec3 Submarine::GetPosition() const

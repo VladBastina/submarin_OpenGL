@@ -14,6 +14,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="stb_image_implementation.cpp" />
     <ClCompile Include="Fish.cpp" />
+    <ClCompile Include="Bubble.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mesh.h" />
@@ -37,5 +38,7 @@
     <None Include="Wall.vs" />
     <None Include="Water.fs" />
     <None Include="Water2.vs" />
+    <None Include="..\Shaders\PhongLight.fs" />
+    <None Include="..\Shaders\PhongLight.vs" />
   </ItemGroup>
 </Project>

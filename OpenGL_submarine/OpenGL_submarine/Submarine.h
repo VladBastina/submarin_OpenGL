@@ -27,7 +27,7 @@ public:
     Submarine();
 
     void ProcessInput(GLFWwindow* window, float deltaTime,SubmarineCamera* camera);
-    void Render(SubmarineCamera* camera,float aspectRatio);
+    void Render(SubmarineCamera* camera,float aspectRatio,float mixValue);
 
     glm::vec3 GetPosition() const;
     float getRotationPitch()const;

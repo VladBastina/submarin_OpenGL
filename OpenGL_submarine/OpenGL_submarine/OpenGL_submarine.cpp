@@ -1,6 +1,6 @@
 #include "Skybox.cpp"
 #include "SubmarineCamera.h"
-#include "Fish.h"
+#include "Bubble.cpp"
 #include <irrKlang.h>
 using namespace irrklang;
 
@@ -10,8 +10,8 @@ using namespace irrklang;
 #include "Submarine.h"
 #include "Bubble.cpp"
 #include <random>
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 1600;
+const unsigned int SCR_HEIGHT = 1200;
 float kaValue = 0.5f;
 
 
@@ -319,17 +319,15 @@ int main(int argc, char** argv)
 		skybox->RenderSkybox(submarineCamera,aspectRatio);
 		ocean->RenderOcean(submarineCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue(),aspectRatio);
 		
-		submarine.Render(submarineCamera,aspectRatio);
+		submarine.Render(submarineCamera,aspectRatio,skybox->getMixValue());
 	
-		fish.Render(submarineCamera,aspectRatio);
+		fish.Render(submarineCamera,aspectRatio,lightPos,skybox->getMixValue());
+		fish.Update(deltaTime);
 
-		
-
-		
 		// Render bubbles
-	/*	for (auto& bubble : bubbles) {
-			bubble.render(pcamera);
-		}*/
+		for (auto& bubble : bubbles) {
+			bubble.Render(submarineCamera,aspectRatio);
+		}
 
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
