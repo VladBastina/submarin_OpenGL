@@ -73,7 +73,7 @@ C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(1
   see previous definition of 'APIENTRY'
   
 C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\OpenGL_submarine.cpp(303,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\OpenGL_submarine.cpp(325,15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\OpenGL_submarine.cpp(324,15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   PerlinNoise.cpp
   Shader.cpp
   SkyBox.cpp

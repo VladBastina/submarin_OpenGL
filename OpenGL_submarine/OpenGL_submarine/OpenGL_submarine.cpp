@@ -254,6 +254,7 @@ int main(int argc, char** argv)
 	std::string underwater_sound = strExePath + "\\underwater.mp3";
 	bool sound = false;
 
+
 	Submarine submarine;
 	submarineCamera=new SubmarineCamera(&submarine, 20.0f,10.0f, 0.0f);
 	Fish fish;
@@ -263,12 +264,12 @@ int main(int argc, char** argv)
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 
-		/*float currentY = pCamera->GetPosition().y;
+		float currenty = submarineCamera->GetPosition().y;
 
-		if ((currentY < -1.0f && lastY >= -1.0f) ||
-			(currentY >= -1.0f && lastY < -1.0f) ||
-			(currentY <= 1.0f && lastY > 1.0f) ||
-			(currentY > 1.0f && lastY <= 1.0f))
+		if ((currenty < -1.0f && lastY >= -1.0f) ||
+			(currenty >= -1.0f && lastY < -1.0f) ||
+			(currenty <= 1.0f && lastY > 1.0f) ||
+			(currenty > 1.0f && lastY <= 1.0f))
 		{
 			sound = false;
 		}
@@ -277,13 +278,13 @@ int main(int argc, char** argv)
 		{
 			SoundEngine->stopAllSounds();
 
-			if (currentY < -1.0f)
+			if (currenty < -1.0f)
 			{
 				sound = true;
 				SoundEngine->play2D(underwater_sound.c_str(), true);
 				SoundEngine->play2D(sonar_sound.c_str(), true);
 			}
-			else if (currentY >= -1.0f && currentY <= 1.0f)
+			else if (currenty >= -1.0f && currenty <= 1.0f)
 			{
 				sound = true;
 				SoundEngine->play2D(splash_sound.c_str(), true);
@@ -295,13 +296,11 @@ int main(int argc, char** argv)
 			}
 		}
 
-		lastY = currentY;
+		lastY = currenty;
 
-		processInput(window);
-		*/
+		//processInput(window);
 
 		submarine.ProcessInput(window, deltaTime, submarineCamera);
-		std::cout << submarine.GetPosition().x << " " << submarine.GetPosition().y<<" "<< submarine.GetPosition().z<< std::endl;
 		submarineCamera->updatePosition();
 
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
@@ -365,7 +364,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	submarineCamera->MouseControl((float)xpos, (float)ypos);
+	/*submarineCamera->MouseControl((float)xpos, (float)ypos);*/
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yOffset)

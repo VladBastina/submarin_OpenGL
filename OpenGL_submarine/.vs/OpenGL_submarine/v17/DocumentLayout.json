@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\OpenGL_submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Fish.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Fish.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Fish.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Fish.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\Submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Bubble.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\Shaders\\PhongLight.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}",
       "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:Shaders\\PhongLight.fs||{8A5AA6CF-46E3-4520-A70A-7393D15233E9}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|solutionrelative:OpenGL_submarine\\OpenGL_submarine.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29611158-B127-43E3-9F1D-DFF05B72B234}|OpenGL_submarine\\OpenGL_submarine.vcxproj|C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Submarine.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -118,7 +118,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -134,8 +134,7 @@
               "RelativeToolTip": "OpenGL_submarine\\Water.fs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-19T19:06:49.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T19:06:49.777Z"
             },
             {
               "$type": "Document",
@@ -147,12 +146,11 @@
               "RelativeToolTip": "Shaders\\PhongLight.vs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-19T19:03:32.023Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T19:03:32.023Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "PhongLight.fs",
               "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\Shaders\\PhongLight.fs",
               "RelativeDocumentMoniker": "Shaders\\PhongLight.fs",
@@ -160,12 +158,11 @@
               "RelativeToolTip": "Shaders\\PhongLight.fs",
               "ViewState": "AQIAACcAAAAAAAAAAAAcwDUAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-05-19T19:01:07.687Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T19:01:07.687Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Fish.h",
               "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Fish.h",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Fish.h",
@@ -173,12 +170,11 @@
               "RelativeToolTip": "OpenGL_submarine\\Fish.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-19T18:22:22.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T18:22:22.393Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Bubble.cpp",
               "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Bubble.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Bubble.cpp",
@@ -186,18 +182,17 @@
               "RelativeToolTip": "OpenGL_submarine\\Bubble.cpp",
               "ViewState": "AQIAABsAAAAAAAAAAAAAAFYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-19T18:42:04.809Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T18:42:04.809Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Fish.cpp",
               "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Fish.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Fish.cpp",
               "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Fish.cpp",
               "RelativeToolTip": "OpenGL_submarine\\Fish.cpp",
-              "ViewState": "AQIAAF8AAAAAAAAAAAAAAHAAAAAGAAAA",
+              "ViewState": "AQIAAHEAAAAAAAAAAAAAAHAAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-19T18:19:27.91Z",
               "EditorCaption": ""
@@ -216,13 +211,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "OpenGL_submarine.cpp",
               "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\OpenGL_submarine.cpp",
               "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\OpenGL_submarine.cpp",
               "RelativeToolTip": "OpenGL_submarine\\OpenGL_submarine.cpp",
-              "ViewState": "AQIAADcBAAAAAAAAAAArwEEBAABGAAAA",
+              "ViewState": "AQIAACQBAAAAAAAAAAArwC4BAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-18T23:39:57.386Z",
               "EditorCaption": ""
@@ -237,8 +232,7 @@
               "RelativeToolTip": "OpenGL_submarine\\Submarine.h",
               "ViewState": "AQIAABgAAAAAAAAAAAAAAB0AAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-18T23:14:25.59Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-18T23:14:25.59Z"
             },
             {
               "$type": "Document",
@@ -278,20 +272,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Submarine.cpp",
               "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Submarine.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\Submarine.cpp",
               "ToolTip": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\Submarine.cpp",
               "RelativeToolTip": "OpenGL_submarine\\Submarine.cpp",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAEQAAAAqAAAA",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAAAGMAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-18T22:48:11.386Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "SubmarineCamera.cpp",
               "DocumentMoniker": "C:\\Users\\vladb\\Documents\\GitHub\\submarin_OpenGL\\OpenGL_submarine\\OpenGL_submarine\\SubmarineCamera.cpp",
               "RelativeDocumentMoniker": "OpenGL_submarine\\SubmarineCamera.cpp",
@@ -299,8 +293,7 @@
               "RelativeToolTip": "OpenGL_submarine\\SubmarineCamera.cpp",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAACQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-18T22:03:50.231Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-18T22:03:50.231Z"
             },
             {
               "$type": "Document",
@@ -312,8 +305,7 @@
               "RelativeToolTip": "OpenGL_submarine\\SubmarineCamera.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAmwAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-19T10:14:42.791Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T10:14:42.791Z"
             },
             {
               "$type": "Document",
@@ -325,8 +317,7 @@
               "RelativeToolTip": "OpenGL_submarine\\Ocean.cpp",
               "ViewState": "AQIAAM4AAAAAAAAAAAAmwOAAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-19T17:14:25.479Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-19T17:14:25.479Z"
             },
             {
               "$type": "Document",

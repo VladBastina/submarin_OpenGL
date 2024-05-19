@@ -68,14 +68,11 @@
 
 		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
 		{
-<<<<<<< Updated upstream
+
 			if (rotationPitch > maxPitchAngle)
 				rotationPitch = maxPitchAngle;
 			rotationPitch += pitchRate * deltaTime;
-=======
-			if (rotationPitch < maxPitchAngle)
-				rotationPitch += pitchRate * deltaTime;
->>>>>>> Stashed changes
+
 		}
 		else if (rotationPitch > 0.0f)
 		{
@@ -95,6 +92,11 @@
 				position.y = surfaceLevel;
 			if (position.y < maxDepth)
 				position.y = maxDepth;
+
+			if (position.x > 166.0f || position.x < -166.0f || position.z < -166.0f || position.z > 166.0f)
+			{
+				position = glm::vec3(0.0f, position.y, 0.0f);
+			}
 		}
 		
 	}
