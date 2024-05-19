@@ -206,13 +206,13 @@ int main(int argc, char** argv)
 	unsigned int skyboxtextureID = loadSkyboxTexture(faces,strExePath);
 	unsigned int stonestextureID = CreateTexture(strExePath + "\\pietris.png");
 	unsigned int causticstextureID = CreateTexture(strExePath + "\\caustic.png");
-	unsigned int bubbleTextureID = CreateTexture("bubble.png");
+	unsigned int bubbleTextureID = CreateTexture(strExePath + "\\bubble.png");
 	if (bubbleTextureID == -1) {
 		std::cout << "Failed to load bubble texture" << std::endl;
 		return -1;
 	}
 
-	Bubble bubble(bubbleTextureID, 0.0f, 0.0f, 0.0f);
+	Bubble bubble(bubbleTextureID, 0.0f, -10.0f, 0.0f);
 	Ocean* ocean = new Ocean();
 	skybox = new SkyBox(skyboxtextureID);
 	

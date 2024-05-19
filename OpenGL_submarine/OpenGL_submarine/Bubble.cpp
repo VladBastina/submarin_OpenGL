@@ -17,15 +17,20 @@ public:
 
 	void Render(Camera* pCamera)
 	{
+		glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
+		glm::mat4 model = glm::mat4(1.0f) * translationMatrix;
 		bubbleShader->Use();
 		bubbleShader->SetMat4("projection", pCamera->GetProjectionMatrix());
 		bubbleShader->SetMat4("view", pCamera->GetViewMatrix());
+		bubbleShader->SetMat4("model", model);
 
 		glBindVertexArray(bubbleVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 6);
 
+		bubbleShader->SetInt("texture1", 0);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, bubbleTexture);
+
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}
 
 	~Bubble()
@@ -46,13 +51,13 @@ private:
 		// Define vertex data
 		float vertices[] = {
 		// Define vertex positions
-		 -1.0f,  1.0f, -1.0f,  
-		 -1.0f, -1.0f, -1.0f, 
-		  1.0f, -1.0f, -1.0f,  
+		-0.25f, -0.25f, 0.0f,  0.0f, 0.0f,
+		-0.25f,  0.25f, 0.0f,  0.0f, 1.0f,
+		 0.25f,  0.25f, 0.0f,  1.0f, 1.0f,
 
-		  1.0f, -1.0f, -1.0f,  
-		  1.0f,  1.0f, -1.0f,  
-		 -1.0f,  1.0f, -1.0f,  
+		-0.25f, -0.25f, 0.0f,  0.0f, 0.0f,
+		 0.25f,  0.25f, 0.0f,  1.0f, 1.0f,
+		 0.25f, -0.25f, 0.0f,  1.0f, 0.0f
 		};
 
 		// Generate and bind VAO
@@ -66,14 +71,11 @@ private:
 		// Copy vertex data to VBO
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-		// Set vertex attribute pointers
-		// Vertex positions
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
-		// Vertex texture coords
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-		glEnableVertexAttribArray(1);
 
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 		// Unbind VAO and VBO
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
