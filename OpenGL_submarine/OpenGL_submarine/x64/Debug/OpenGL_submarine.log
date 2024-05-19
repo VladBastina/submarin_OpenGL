@@ -1,4 +1,17 @@
-﻿  Camera.cpp
+﻿  Fish.cpp
+C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Mesh.h(88,56): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'Fish.cpp')
+  
+  Model.cpp
+C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Mesh.h(88,56): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'Model.cpp')
+  
+  stb_image_implementation.cpp
+  Submarine.cpp
+C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Mesh.h(88,56): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'Submarine.cpp')
+  
+  Camera.cpp
   GerstnerWave.cpp
   Ocean.cpp
 C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Ocean.cpp(89,29): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
@@ -42,14 +55,15 @@ C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarin
 C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Ocean.cpp(309,48): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'OpenGL_submarine.cpp')
   
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Mesh.h(88,56): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  (compiling source file 'OpenGL_submarine.cpp')
-  
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
   (compiling source file 'OpenGL_submarine.cpp')
   C:\Users\vladb\Documents\GitHub\submarin_OpenGL\_external\glfw-3.4.bin.WIN64\include\GLFW\glfw3.h(123,1):
   see previous definition of 'APIENTRY'
   
+C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Mesh.h(88,56): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'OpenGL_submarine.cpp')
+  
+C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\OpenGL_submarine.cpp(278,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   PerlinNoise.cpp
   Shader.cpp
   SkyBox.cpp
@@ -81,5 +95,10 @@ C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarin
 C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Ocean.cpp(309,48): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'SkyBox.cpp')
   
+  SubmarineCamera.cpp
+C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Mesh.h(88,56): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'SubmarineCamera.cpp')
+  
+  Texture.cpp
   Generating Code...
   OpenGL_submarine.vcxproj -> C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\x64\Debug\OpenGL_submarine.exe

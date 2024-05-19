@@ -1,6 +1,6 @@
 #include "Skybox.cpp"
 #include "SubmarineCamera.h"
-#include "Submarine.h"
+#include "Fish.h"
 #include <irrKlang.h>
 using namespace irrklang;
 
@@ -231,6 +231,7 @@ int main(int argc, char** argv)
 
 	Submarine submarine;
 	SubmarineCamera cameraSubmarine(&submarine, 10.0f, 10.0f, 0.0f);
+	Fish fish;
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
 		double currentFrame = glfwGetTime();
@@ -290,7 +291,7 @@ int main(int argc, char** argv)
 		cameraSubmarine.updatePosition();
 		submarine.Render(&cameraSubmarine);
 	
-
+		fish.Render(&cameraSubmarine);
 
 
 
