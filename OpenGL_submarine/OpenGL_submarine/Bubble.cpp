@@ -21,11 +21,11 @@ public:
 		bubbleShader->SetMat4("projection", pCamera->GetProjectionMatrix());
 		bubbleShader->SetMat4("view", pCamera->GetViewMatrix());
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, bubbleTexture);
-
 		glBindVertexArray(bubbleVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, bubbleTexture);
 	}
 
 	~Bubble()
@@ -45,7 +45,7 @@ private:
 	{
 		// Define vertex data
 		float vertices[] = {
-			// Define vertex positions
+		// Define vertex positions
 		 -1.0f,  1.0f, -1.0f,  
 		 -1.0f, -1.0f, -1.0f, 
 		  1.0f, -1.0f, -1.0f,  

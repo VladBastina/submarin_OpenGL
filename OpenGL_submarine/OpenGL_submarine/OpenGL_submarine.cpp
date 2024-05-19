@@ -212,7 +212,7 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	Bubble bubble(bubbleTextureID, 1.0f, 0.0f, 0.0f);
+	Bubble bubble(bubbleTextureID, 0.0f, 0.0f, 0.0f);
 	Ocean* ocean = new Ocean();
 	skybox = new SkyBox(skyboxtextureID);
 	
@@ -248,9 +248,9 @@ int main(int argc, char** argv)
 
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
 
-		bubble.Render(pCamera);
+		
 		submarine.Render(pCamera);
-	
+		bubble.Render(pCamera);
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		glfwSwapBuffers(window);
 		glfwPollEvents();
