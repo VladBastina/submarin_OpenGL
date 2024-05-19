@@ -13,6 +13,7 @@
     <ClCompile Include="SubmarineCamera.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="stb_image_implementation.cpp" />
+    <ClCompile Include="Fish.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mesh.h" />
@@ -22,6 +23,7 @@
     <ClInclude Include="SubmarineCamera.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Fish.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\ViewOBJModel\Shaders\PhongLight.fs" />
