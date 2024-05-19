@@ -2,7 +2,7 @@
 
 #include <GL/glew.h>
 #include <string>
-#include "Shader.cpp"
+#include "Shader.h"
 #include "Camera.cpp"
 
 class Bubble

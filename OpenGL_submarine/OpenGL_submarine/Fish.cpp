@@ -16,10 +16,10 @@ Fish::Fish()
 	fish = Model(submarineObjFileName);
 }
 
-void Fish::Render(SubmarineCamera* camera)
+void Fish::Render(SubmarineCamera* camera,float aspectRatio)
 {
 	fishShader->Use();
-	fishShader->SetMat4("projection", camera->GetProjectionMatrix());
+	fishShader->SetMat4("projection", camera->GetProjectionMatrix(aspectRatio));
 	fishShader->SetMat4("view", camera->GetViewMatrix());
 	glm::mat4 fishModel = glm::mat4(1.0f);
 	fishShader->SetMat4("model", fishModel);

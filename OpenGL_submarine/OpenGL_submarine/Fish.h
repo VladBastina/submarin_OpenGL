@@ -11,7 +11,7 @@ private:
 public:
 	Fish();
 
-	void Render(SubmarineCamera* camera);
+	void Render(SubmarineCamera* camera,float aspectRatio);
 
 };
 

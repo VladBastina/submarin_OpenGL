@@ -7,7 +7,7 @@ using namespace irrklang;
 #pragma comment (lib, "irrKlang.lib")
 
 #include "Model.h"
-#include "Submarine.cpp"
+#include "Submarine.h"
 #include "Bubble.cpp"
 #include <random>
 const unsigned int SCR_WIDTH = 800;
@@ -228,7 +228,7 @@ int main(int argc, char** argv)
 
 	std::vector <Bubble> bubbles;
 	
-	for (int i = 0; i < 1000; ++i) {
+	for (int i = 0; i < 50; ++i) {
 		float x = disX(gen);
 		float y = disY(gen);
 		float z = disZ(gen);
@@ -321,16 +321,15 @@ int main(int argc, char** argv)
 		
 		submarine.Render(submarineCamera,aspectRatio);
 	
-		fish.Render(&cameraSubmarine);
+		fish.Render(submarineCamera,aspectRatio);
 
 		
-		submarine.Render(pCamera);
 
 		
 		// Render bubbles
-		for (auto& bubble : bubbles) {
-			bubble.Render(pCamera);
-		}
+	/*	for (auto& bubble : bubbles) {
+			bubble.render(pcamera);
+		}*/
 
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
