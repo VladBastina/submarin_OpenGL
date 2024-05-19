@@ -1,16 +1,6 @@
-#pragma once
-
-#include <Windows.h>
-#include <locale>
-#include <codecvt>
-#include "Camera.cpp"
-#include "Model.h"
-
-class Submarine
-{
-public:
-	Model submarine;
-	Submarine()
+#include "Submarine.h"
+#include "SubmarineCamera.h"
+	Submarine::Submarine() :position(glm::vec3(0.0f, 0.0f, 0.0f)), rotationYaw(0.0f), rotationPitch(0.0f), acceleration(0.0f), currentSpeed(0.0f), rotationRoll(0.0f)
 	{
 		wchar_t buffer[MAX_PATH];
 		GetCurrentDirectoryW(MAX_PATH, buffer);
@@ -25,21 +15,91 @@ public:
 		submarine = Model(submarineObjFileName);
 	}
 
-	/*public void move()
+	void Submarine::ProcessInput(GLFWwindow* window, float deltaTime)
 	{
-		checkInput();
+		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		{
+			acceleration += accelerationRate * deltaTime;
+			currentSpeed += acceleration * deltaTime;
 
+			if (currentSpeed > maxSpeed)
+				currentSpeed = maxSpeed;
+		}
+		else
+		{
+			if (currentSpeed > 0.0f)
+			{
+				currentSpeed -= decelerationRate * deltaTime;
+				if (currentSpeed < 0.0f)
+				{
+					currentSpeed = 0.0f;
+					acceleration = 0.0f;
+				}
+			}
+		}
+		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		{
+			rotationYaw -= rotationSpeed * deltaTime;
+			rotationRoll = glm::mix(rotationRoll, -rollAngle, 0.1f);
+
+		}
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		{
+			rotationYaw += rotationSpeed * deltaTime;
+			rotationRoll = glm::mix(rotationRoll, rollAngle, 0.1f);
+		}
+		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_RELEASE && glfwGetKey(window, GLFW_KEY_D) == GLFW_RELEASE)
+		{
+			rotationRoll = glm::mix(rotationRoll, 0.0f, 0.1f);
+		}
+		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+		{
+			if (rotationPitch > -maxPitchAngle)
+				rotationPitch -= pitchRate * deltaTime;
+		}
+		else if (rotationPitch < 0.0f)
+		{
+			rotationPitch += pitchRate * deltaTime;
+		}
+
+		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+		{
+			if (rotationPitch < maxPitchAngle)
+				rotationPitch += pitchRate * deltaTime;
+		}
+		else if (rotationPitch > 0.0f)
+		{
+			rotationPitch -= pitchRate * deltaTime;
+		}
+
+		if (currentSpeed > 0.0f)
+		{
+			glm::vec3 forwardMovement = glm::vec3(sin(glm::radians(rotationYaw)), 0.0f, cos(glm::radians(rotationYaw))) * currentSpeed * deltaTime;
+			glm::vec3 verticalMovement = glm::vec3(0.0f, -sin(glm::radians(rotationPitch)) * 5.0f * currentSpeed * deltaTime, 0.0f);
+
+			position += forwardMovement + verticalMovement;
+
+			if (position.y > surfaceLevel)
+				position.y = surfaceLevel;
+			if (position.y < maxDepth)
+				position.y = maxDepth;
+		}
 	}
-	public increasePosition(float dx, float dy, float dz)
+	/*public increasePosition(float dx, float dy, float dz)
 	{
 		this->increasePosition=
 	}*/
-	void Render(Camera* pCamera,glm::vec3 lightPos)
+
+	void Submarine::Render(SubmarineCamera* camera)
 	{
 		submarineShader->Use();
-		submarineShader->SetMat4("projection", pCamera->GetProjectionMatrix());
-		submarineShader->SetMat4("view", pCamera->GetViewMatrix());
-		glm::mat4 submarineModel = glm::scale(glm::mat4(1.0), glm::vec3(1.f));
+		submarineShader->SetMat4("projection", camera->GetProjectionMatrix());
+		submarineShader->SetMat4("view", camera->GetViewMatrix());
+		glm::mat4 submarineModel = glm::mat4(1.0f);
+		submarineModel = glm::translate(submarineModel,position);
+		submarineModel = glm::rotate(submarineModel, glm::radians(rotationYaw), glm::vec3(0.0f, 1.0f, 0.0f));
+		submarineModel = glm::rotate(submarineModel, glm::radians(rotationPitch), glm::vec3(1.0f, 0.0f, 0.0f));
+		submarineModel = glm::rotate(submarineModel, glm::radians(rotationRoll), glm::vec3(0.0f, 0.0f, 1.0f));
 		submarineShader->SetMat4("model", submarineModel);
 		submarineShader->SetVec3("lightPos", lightPos);
 		submarineShader->SetVec3("lightColor", glm::vec3(1.0f, 0.8f, 0.4f));
@@ -49,42 +109,20 @@ public:
 		submarineShader->SetFloat("specularConstant", 1.0f);
 		submarineShader->SetFloat("shininess", 1000.0f);
 		submarine.Draw(submarineShader);
-
-
 	}
-private:
-	Shader* submarineShader;
-
-	/*const float speed = 20;
-	const float turnSpeed = 5;
-	float currentSpeed = 0;
-	float currentTurn = 0;
-	float rotX, rotY, rotZ;*/
-
-	/*void checkInput()
+	glm::vec3 Submarine::GetPosition() const
 	{
-		float velocity = (float)(cameraSpeedFactor * deltaTime);
-		switch (direction) {
-		case EMovementSubmarineType::FORWARD:
-			this->currentSpeed += speed;
-			break;
-		case EMovementSubmarineType::ROLLLEFT:
-			position -= forward * velocity;
-			break;
-		case EMovementSubmarineType::ROLLRIGHT:
-			position -= right * velocity;
-			break;
-		case EMovementSubmarineType::DOWN:
-			position += right * velocity;
-			break;
-		case EMovementSubmarineType::UP:
-			position += up * velocity;
-			break;
-		case ECameraMovementType::DOWN:
-			position -= up * velocity;
-			break;
-		}
-	}*/
+		return position;
+	}
 
+	float Submarine::RotationYaw() const
+	{
+		return rotationYaw;
+	}
 
-};
+	float Submarine::RotationPitch() const
+	{
+		return rotationPitch;
+	}
+	
+

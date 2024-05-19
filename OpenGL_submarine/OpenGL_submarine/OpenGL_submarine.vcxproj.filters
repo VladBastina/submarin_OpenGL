@@ -32,6 +32,16 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PerlinNoise.cpp">
+    <ClCompile Include="Submarine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SubmarineCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -76,5 +86,9 @@
     <None Include="Wall.fs">
       <Filter>Source Files</Filter>
     </None>
+    <ClInclude Include="SubmarineCamera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Submarine.h" />
   </ItemGroup>
 </Project>

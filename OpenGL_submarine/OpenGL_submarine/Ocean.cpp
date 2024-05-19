@@ -1,4 +1,4 @@
-#include "Shader.cpp"
+#include "Shader.h"
 #include "Camera.cpp"
 #include "GerstnerWave.cpp"
 #include "PerlinNoise.cpp"

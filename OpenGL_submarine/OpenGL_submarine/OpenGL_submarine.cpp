@@ -1,5 +1,6 @@
 #include "Skybox.cpp"
-#include "Submarine.cpp"
+#include "SubmarineCamera.h"
+#include "Submarine.h"
 
 #include <irrKlang.h>
 using namespace irrklang;
@@ -17,6 +18,7 @@ SkyBox* skybox= nullptr;
 void Cleanup()
 {
 	delete pCamera;
+	
 }
 
 unsigned int loadSkyboxTexture(const std::vector<std::string>& faces, std::string strExePath)
@@ -229,6 +231,8 @@ int main(int argc, char** argv)
 	bool sound = false;
 
 	Submarine submarine;
+	SubmarineCamera cameraSubmarine(&submarine, 10.0f, 10.0f, 0.0f);
+	// render loop
 	while (!glfwWindowShouldClose(window)) {
 		double currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
@@ -271,7 +275,8 @@ int main(int argc, char** argv)
 		processInput(window);
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
+		submarine.ProcessInput(window, deltaTime);
+
 
 		glm::vec3 position = pCamera->GetPosition();
 
@@ -281,11 +286,10 @@ int main(int argc, char** argv)
 		}
 
 		skybox->RenderSkybox(pCamera);
-
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
-
-
-		submarine.Render(pCamera,lightPos);
+		
+		cameraSubmarine.updatePosition();
+		submarine.Render(&cameraSubmarine);
 	
 
 

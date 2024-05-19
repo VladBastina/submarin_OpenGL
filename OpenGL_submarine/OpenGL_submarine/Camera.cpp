@@ -41,6 +41,8 @@ private:
 	const float YAW = -90.0f;
 	const float PITCH = 0.0f;
 	const float FOV = 45.0f;
+	float distance = 50.0f;
+	float angle = 0.0f;
 	glm::vec3 startPosition;
 
 public:
@@ -49,6 +51,7 @@ public:
 		startPosition = position;
 		Set(width, height, position);
 	}
+	
 
 	void Set(const int width, const int height, const glm::vec3& position)
 	{
@@ -177,6 +180,12 @@ public:
 	}
 
 private:
+	/*void calcuclateZoom()
+	{
+		float zoomLevel=Glfwmouse
+	}*/
+
+	
 	void ProcessMouseMovement(float xOffset, float yOffset, bool constrainPitch = true)
 	{
 		yaw += xOffset;
