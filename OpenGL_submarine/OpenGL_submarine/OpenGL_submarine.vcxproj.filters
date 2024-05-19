@@ -34,6 +34,9 @@
     <ClCompile Include="PerlinNoise.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bubble.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Water.fs" />
@@ -52,6 +55,12 @@
     </None>
     <None Include="..\..\..\..\ViewOBJModel\Shaders\PhongLight.vs">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="Bubble.vs">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="Bubble.fs">
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

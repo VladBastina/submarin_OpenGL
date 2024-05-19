@@ -2,6 +2,7 @@
 #include "Skybox.cpp"
 #include "Model.h"
 #include "Submarine.cpp"
+#include "Bubble.cpp"
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 float kaValue = 0.5f;
@@ -205,7 +206,13 @@ int main(int argc, char** argv)
 	unsigned int skyboxtextureID = loadSkyboxTexture(faces,strExePath);
 	unsigned int stonestextureID = CreateTexture(strExePath + "\\pietris.png");
 	unsigned int causticstextureID = CreateTexture(strExePath + "\\caustic.png");
+	unsigned int bubbleTextureID = CreateTexture("bubble.png");
+	if (bubbleTextureID == -1) {
+		std::cout << "Failed to load bubble texture" << std::endl;
+		return -1;
+	}
 
+	Bubble bubble(bubbleTextureID, 1.0f, 0.0f, 0.0f);
 	Ocean* ocean = new Ocean();
 	skybox = new SkyBox(skyboxtextureID);
 	
@@ -214,7 +221,6 @@ int main(int argc, char** argv)
 
 	glm::vec3 lightPos(0.0f, 20.0f, 0.0f);
 	glm::vec3 lightColor(1.0f, 0.8f, 0.4f);
-
 
 
 	Submarine submarine;
@@ -242,13 +248,9 @@ int main(int argc, char** argv)
 
 		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
 
-
+		bubble.Render(pCamera);
 		submarine.Render(pCamera);
 	
-
-
-
-
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		glfwSwapBuffers(window);
 		glfwPollEvents();

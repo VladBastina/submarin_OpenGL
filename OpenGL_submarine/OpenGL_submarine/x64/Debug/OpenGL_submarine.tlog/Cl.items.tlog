@@ -1,7 +1,8 @@
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Camera.cpp;C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\Camera.obj
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\GerstnerWave.cpp;C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\GerstnerWave.obj
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Ocean.cpp;C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\Ocean.obj
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\OpenGL_submarine.cpp;C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\OpenGL_submarine.obj
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\PerlinNoise.cpp;C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\PerlinNoise.obj
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Shader.cpp;C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\Shader.obj
-C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\SkyBox.cpp;C:\Users\vladb\Documents\GitHub\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\SkyBox.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Bubble.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\Bubble.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Camera.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\Camera.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\GerstnerWave.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\GerstnerWave.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Ocean.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\Ocean.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\OpenGL_submarine.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\OpenGL_submarine.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\PerlinNoise.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\PerlinNoise.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\Shader.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\Shader.obj
+D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\SkyBox.cpp;D:\Facultate\S3D\submarin_OpenGL\OpenGL_submarine\OpenGL_submarine\x64\Debug\SkyBox.obj
