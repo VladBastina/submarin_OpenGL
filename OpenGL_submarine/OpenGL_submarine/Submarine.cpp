@@ -55,21 +55,27 @@
 		}
 		if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
 		{
-			if (rotationPitch > -maxPitchAngle)
-				rotationPitch -= pitchRate * deltaTime;
+			if (rotationPitch < -maxPitchAngle)
+				rotationPitch = maxPitchAngle;
+			rotationPitch -= pitchRate * deltaTime;
 		}
 		else if (rotationPitch < 0.0f)
 		{
+			if (rotationPitch > 0.0f)
+				rotationPitch = 0.0f;
 			rotationPitch += pitchRate * deltaTime;
 		}
 
 		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
 		{
-			if (rotationPitch < maxPitchAngle)
-				rotationPitch += pitchRate * deltaTime*1000;
+			if (rotationPitch > maxPitchAngle)
+				rotationPitch = maxPitchAngle;
+			rotationPitch += pitchRate * deltaTime;
 		}
 		else if (rotationPitch > 0.0f)
 		{
+			if (rotationPitch < 0.0f)
+				rotationPitch = 0.0f;
 			rotationPitch -= pitchRate * deltaTime;
 		}
 

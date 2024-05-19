@@ -21,7 +21,6 @@ public:
     void SetPitch(float pitch);
     void SetYaw(float yaw);
     void calculateZoom(float yOffset);
-    void MouseControl(float xpos, float ypos);
 private:
     glm::vec3 calculateNewPoint(glm::vec3 startPoint, glm::vec3 direction, float distance);
     bool thirdPerson;

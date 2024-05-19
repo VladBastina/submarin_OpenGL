@@ -67,10 +67,6 @@ void SubmarineCamera::calculateZoom(float yOffset)
     }
 }
 
-void SubmarineCamera::MouseControl(float xpos, float ypos)
-{
-}
-
 glm::vec3 SubmarineCamera::calculateNewPoint(glm::vec3 startPoint, glm::vec3 direction, float distance) {
     glm::vec3 newPoint = startPoint - direction * distance*5.0f;
     return newPoint;
