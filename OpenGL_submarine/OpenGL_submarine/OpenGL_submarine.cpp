@@ -13,7 +13,7 @@ float kaValue = 0.5f;
 
 Camera* pCamera = nullptr;
 SkyBox* skybox= nullptr;
-
+SubmarineCamera* submarineCamera = nullptr;
 void Cleanup()
 {
 	delete pCamera;
@@ -230,14 +230,14 @@ int main(int argc, char** argv)
 	bool sound = false;
 
 	Submarine submarine;
-	SubmarineCamera cameraSubmarine(&submarine, 10.0f, 10.0f, 0.0f);
+	submarineCamera=new SubmarineCamera(&submarine, 20.0f,10.0f, 0.0f);
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
 		double currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 
-		float currentY = pCamera->GetPosition().y;
+		/*float currentY = pCamera->GetPosition().y;
 
 		if ((currentY < -1.0f && lastY >= -1.0f) ||
 			(currentY >= -1.0f && lastY < -1.0f) ||
@@ -272,23 +272,28 @@ int main(int argc, char** argv)
 		lastY = currentY;
 
 		processInput(window);
+		*/
+
+		submarine.ProcessInput(window, deltaTime, submarineCamera);
+		std::cout << submarine.GetPosition().x << " " << submarine.GetPosition().y<<" "<< submarine.GetPosition().z<< std::endl;
+		submarineCamera->updatePosition();
+
 		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		submarine.ProcessInput(window, deltaTime);
 
 
-		glm::vec3 position = pCamera->GetPosition();
+		/*glm::vec3 position = pCamera->GetPosition();
 
 		if (position.x < (-166.6f) || position.x>(166.6f) || position.z < (-166.6f) || position.z>166.6f)
 		{
 			pCamera->SetPosition(glm::vec3(0.0f, position.y, 0.0f));
-		}
+		}*/
+		float aspectRatio = (float)SCR_WIDTH / (float)SCR_HEIGHT;
 
-		skybox->RenderSkybox(pCamera);
-		ocean->RenderOcean(pCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue());
+		skybox->RenderSkybox(submarineCamera,aspectRatio);
+		ocean->RenderOcean(submarineCamera, lightPos, lightColor, currentFrame, waves,skyboxtextureID,stonestextureID,causticstextureID,skybox->getMixValue(),aspectRatio);
 		
-		cameraSubmarine.updatePosition();
-		submarine.Render(&cameraSubmarine);
+		submarine.Render(submarineCamera,aspectRatio);
 	
 
 
@@ -303,6 +308,7 @@ int main(int argc, char** argv)
 	Cleanup();
 	delete ocean;
 	delete skybox;
+	delete submarineCamera;
 	SoundEngine->drop();
 
 	// glfw: terminate, clearing all previously allocated GLFW resources
@@ -328,10 +334,11 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	pCamera->MouseControl((float)xpos, (float)ypos);
+	submarineCamera->MouseControl((float)xpos, (float)ypos);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yOffset)
 {
-	pCamera->ProcessMouseScroll((float)yOffset);
+	submarineCamera->calculateZoom((float)yOffset);
+
 }

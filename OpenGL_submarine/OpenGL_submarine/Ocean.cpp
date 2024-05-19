@@ -2,6 +2,7 @@
 #include "Camera.cpp"
 #include "GerstnerWave.cpp"
 #include "PerlinNoise.cpp"
+#include "SubmarineCamera.h"
 
 class Ocean 
 {
@@ -186,14 +187,14 @@ public:
 		wallShader = new Shader("Wall.vs", "Wall.fs");
 	}
 
-	void RenderOcean(Camera* pCamera, glm::vec3 lightPos, glm::vec3 lightColor,double currentFrame,std::vector<GerstnerWave>waves,unsigned int skyboxTextureID,unsigned int stonesTextureID ,unsigned int causticstextureID,float mixValue)
+	void RenderOcean(SubmarineCamera* pCamera, glm::vec3 lightPos, glm::vec3 lightColor,double currentFrame,std::vector<GerstnerWave>waves,unsigned int skyboxTextureID,unsigned int stonesTextureID ,unsigned int causticstextureID,float mixValue,float aspectRatio)
 	{
 		glm::mat4 model = glm::mat4(1.0);
 
 		glm::mat4 waterModel = glm::translate(glm::mat4(1.0), glm::vec3(pCamera->GetPosition().x, 0.0, pCamera->GetPosition().z));
 
 		oceanShader->Use();
-		glm::mat4 projection = pCamera->GetProjectionMatrix();
+		glm::mat4 projection = pCamera->GetProjectionMatrix(aspectRatio);
 		glm::mat4 view = pCamera->GetViewMatrix();
 		oceanShader->SetMat4("projection", projection);
 		oceanShader->SetMat4("view", view);

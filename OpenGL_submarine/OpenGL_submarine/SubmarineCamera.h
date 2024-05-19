@@ -13,17 +13,26 @@ public:
 
     
 
-    glm::mat4 GetViewMatrix() const;
-    glm::mat4 GetProjectionMatrix() const;
-    glm::vec3 GetPosition();
+    glm::mat4 GetViewMatrix() ;
+     glm::mat4 GetProjectionMatrix(float aspectRatio) const;
+    glm::vec3 GetPosition() const;
     void updatePosition();
+    void SetDistanceFromTarget(float distance);
+    void SetPitch(float pitch);
+    void SetYaw(float yaw);
+    void calculateZoom(float yOffset);
+    void MouseControl(float xpos, float ypos);
 private:
+    glm::vec3 calculateNewPoint(glm::vec3 startPoint, glm::vec3 direction, float distance);
+    bool thirdPerson;
     Submarine* submarine;
     glm::vec3 position;
     glm::vec3 target;
     glm::vec3 up;
     float distanceFromTarget;
+    float angle;
     float pitch;
     float yaw;
+    float roll;
 };
 #endif

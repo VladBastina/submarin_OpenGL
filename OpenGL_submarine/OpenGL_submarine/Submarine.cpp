@@ -1,6 +1,7 @@
-#include "Submarine.h"
+﻿#include "Submarine.h"
 #include "SubmarineCamera.h"
-	Submarine::Submarine() :position(glm::vec3(0.0f, 0.0f, 0.0f)), rotationYaw(0.0f), rotationPitch(0.0f), acceleration(0.0f), currentSpeed(0.0f), rotationRoll(0.0f)
+	Submarine::Submarine() :position(glm::vec3(0.0f, 0.0f, 0.0f)), rotationYaw(0.0f), rotationPitch(0.0f), acceleration(0.0f), currentSpeed(0.0f), rotationRoll(0.0f),
+		lastPosition(glm::vec3(0.0f, 0.0f, 0.5f))
 	{
 		wchar_t buffer[MAX_PATH];
 		GetCurrentDirectoryW(MAX_PATH, buffer);
@@ -15,7 +16,7 @@
 		submarine = Model(submarineObjFileName);
 	}
 
-	void Submarine::ProcessInput(GLFWwindow* window, float deltaTime)
+	void Submarine::ProcessInput(GLFWwindow* window, float deltaTime, SubmarineCamera* camera)
 	{
 		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		{
@@ -65,7 +66,7 @@
 		if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
 		{
 			if (rotationPitch < maxPitchAngle)
-				rotationPitch += pitchRate * deltaTime;
+				rotationPitch += pitchRate * deltaTime*1000;
 		}
 		else if (rotationPitch > 0.0f)
 		{
@@ -75,7 +76,7 @@
 		if (currentSpeed > 0.0f)
 		{
 			glm::vec3 forwardMovement = glm::vec3(sin(glm::radians(rotationYaw)), 0.0f, cos(glm::radians(rotationYaw))) * currentSpeed * deltaTime;
-			glm::vec3 verticalMovement = glm::vec3(0.0f, -sin(glm::radians(rotationPitch)) * 5.0f * currentSpeed * deltaTime, 0.0f);
+			glm::vec3 verticalMovement = glm::vec3(0.0f, -sin(glm::radians(rotationPitch)) * 1.0f * currentSpeed * deltaTime, 0.0f);
 
 			position += forwardMovement + verticalMovement;
 
@@ -84,16 +85,17 @@
 			if (position.y < maxDepth)
 				position.y = maxDepth;
 		}
+		
 	}
 	/*public increasePosition(float dx, float dy, float dz)
 	{
 		this->increasePosition=
 	}*/
 
-	void Submarine::Render(SubmarineCamera* camera)
+	void Submarine::Render(SubmarineCamera* camera,float aspectRatio)
 	{
 		submarineShader->Use();
-		submarineShader->SetMat4("projection", camera->GetProjectionMatrix());
+		submarineShader->SetMat4("projection", camera->GetProjectionMatrix(aspectRatio));
 		submarineShader->SetMat4("view", camera->GetViewMatrix());
 		glm::mat4 submarineModel = glm::mat4(1.0f);
 		submarineModel = glm::translate(submarineModel,position);
@@ -115,6 +117,11 @@
 		return position;
 	}
 
+	float Submarine::getRotationPitch() const
+	{
+		return rotationPitch;
+	}
+
 	float Submarine::RotationYaw() const
 	{
 		return rotationYaw;
@@ -124,5 +131,17 @@
 	{
 		return rotationPitch;
 	}
+
+	glm::vec3 Submarine::Direction()
+	{
+		if (lastPosition != position)
+		{
+			direction = glm::normalize(position - lastPosition);
+			lastPosition = position;
+		}
+		return direction;
+
+	}
+	
 	
 

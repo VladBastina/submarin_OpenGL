@@ -68,14 +68,14 @@ public:
         skyboxShader = new Shader("SkyBox.vs", "SkyBox.fs");
     }
 
-    void RenderSkybox(Camera* pcamera)
+    void RenderSkybox(SubmarineCamera* pcamera,float aspectRatio)
     {
         glDepthFunc(GL_LEQUAL);
 		glDepthMask(GL_FALSE);
         skyboxShader->Use();
         glm::mat4 view = glm::mat4(glm::mat3(pcamera->GetViewMatrix()));
         skyboxShader->SetMat4("view", view);
-        skyboxShader->SetMat4("projection", pcamera->GetProjectionMatrix());
+        skyboxShader->SetMat4("projection", pcamera->GetProjectionMatrix(aspectRatio));
 		skyboxShader->SetFloat("mixValue", mixValue);
 		skyboxShader->SetInt("skybox", 0);
 
