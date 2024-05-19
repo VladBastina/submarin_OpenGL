@@ -6,6 +6,10 @@ using namespace irrklang;
 
 #pragma comment (lib, "irrKlang.lib")
 
+#include "Model.h"
+#include "Submarine.cpp"
+#include "Bubble.cpp"
+#include <random>
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 float kaValue = 0.5f;
@@ -210,7 +214,28 @@ int main(int argc, char** argv)
 	unsigned int skyboxtextureID = loadSkyboxTexture(faces,strExePath);
 	unsigned int stonestextureID = CreateTexture(strExePath + "\\pietris.png");
 	unsigned int causticstextureID = CreateTexture(strExePath + "\\caustic.png");
+	unsigned int bubbleTextureID = CreateTexture(strExePath + "\\bubble.png");
+	if (bubbleTextureID == -1) {
+		std::cout << "Failed to load bubble texture" << std::endl;
+		return -1;
+	}
 
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<float> disX(-200.0f, 200.0f); 
+	std::uniform_real_distribution<float> disY(-100.0f, -1.0f);
+	std::uniform_real_distribution<float> disZ(-200.0f, 200.0f);
+
+	std::vector <Bubble> bubbles;
+	
+	for (int i = 0; i < 1000; ++i) {
+		float x = disX(gen);
+		float y = disY(gen);
+		float z = disZ(gen);
+		bubbles.push_back(Bubble(bubbleTextureID, x, y, z));
+	}
+
+	//Bubble bubble(bubbleTextureID, 0.0f, -10.0f, 0.0f);
 	Ocean* ocean = new Ocean();
 	skybox = new SkyBox(skyboxtextureID);
 	
@@ -293,6 +318,14 @@ int main(int argc, char** argv)
 	
 		fish.Render(&cameraSubmarine);
 
+		
+		submarine.Render(pCamera);
+
+		
+		// Render bubbles
+		for (auto& bubble : bubbles) {
+			bubble.Render(pCamera);
+		}
 
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
