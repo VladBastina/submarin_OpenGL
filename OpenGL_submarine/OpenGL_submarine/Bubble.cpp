@@ -15,6 +15,14 @@ public:
 		Initialize();
 	}
 
+	Bubble(const Bubble& other)
+		: bubbleTexture(other.bubbleTexture), x(other.x), y(other.y), z(other.z)
+	{
+		bubbleShader = new Shader("Bubble.vs", "Bubble.fs");
+		Initialize();
+	}
+
+
 	void Render(Camera* pCamera)
 	{
 		glm::mat4 translationMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(x, y, z));
