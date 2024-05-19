@@ -1,7 +1,6 @@
 #include "Skybox.cpp"
 #include "SubmarineCamera.h"
 #include "Submarine.h"
-
 #include <irrKlang.h>
 using namespace irrklang;
 

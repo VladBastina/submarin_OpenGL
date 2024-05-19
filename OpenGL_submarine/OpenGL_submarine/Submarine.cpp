@@ -101,9 +101,9 @@
 		submarineModel = glm::rotate(submarineModel, glm::radians(rotationPitch), glm::vec3(1.0f, 0.0f, 0.0f));
 		submarineModel = glm::rotate(submarineModel, glm::radians(rotationRoll), glm::vec3(0.0f, 0.0f, 1.0f));
 		submarineShader->SetMat4("model", submarineModel);
-		submarineShader->SetVec3("lightPos", lightPos);
+		//submarineShader->SetVec3("lightPos", lightPos);
 		submarineShader->SetVec3("lightColor", glm::vec3(1.0f, 0.8f, 0.4f));
-		submarineShader->SetVec3("viewPos", pCamera->GetPosition());
+		//submarineShader->SetVec3("viewPos", pCamera->GetPosition());
 		submarineShader->SetFloat("ambientReflection", 0.3f);
 		submarineShader->SetFloat("diffuseConstant", 1.0f);
 		submarineShader->SetFloat("specularConstant", 1.0f);
