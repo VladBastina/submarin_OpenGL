@@ -4,6 +4,8 @@
 
 Proiectul constă în simularea plimbării unui submarin pe suprafața și sub suprafața apei, în diferite condiții de lumină (zi și noapte). Acesta include un efect de apă realistă, un teren generat procedural și obiecte pentru pești, submarin și alte elemente. De asemenea, proiectul include efecte sonore care variază în funcție de poziția submarinului, folosind biblioteca irrKlang pentru gestionarea sunetelor. Pentru încărcarea și gestionarea obiectelor, s-a folosit biblioteca Assimp.
 
+![Imagine de peisaj subacvatic](https://github.com/VladBastina/submarin_OpenGL/blob/main/submarin1.png)
+
 ## Componente Principale
 
 ### 1. Plimbarea Submarinului
@@ -39,6 +41,8 @@ Efectele sonore sunt utilizate pentru a îmbunătăți experiența de joc. Sunet
 - **Assimp**: Pentru încărcarea și gestionarea modelelor 3D.
 - **irrKlang**: Pentru gestionarea efectelor sonore și a sunetelor.
 - **Perlin Noise**: Pentru generarea terenului subacvatic.
+
+![Imagine de peisaj subacvatic](https://github.com/VladBastina/submarin_OpenGL/blob/main/submarin2.png)
 
 ## Concluzie
 
